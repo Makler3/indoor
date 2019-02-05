@@ -50,7 +50,7 @@
 		C8253D0722047481008FA557 = {
 			isa = PBXGroup;
 			children = (
-				C8253D1222047481008FA557 /* indoor navigation a */,
+				C8253D1222047481008FA557 /* IndoorNavigation */,
 				C8253D1122047481008FA557 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,7 +63,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C8253D1222047481008FA557 /* indoor navigation a */ = {
+		C8253D1222047481008FA557 /* IndoorNavigation */ = {
 			isa = PBXGroup;
 			children = (
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
@@ -79,6 +79,7 @@
 				C8253D1F22047482008FA557 /* Info.plist */,
 				9CDF449622098E80000BECF9 /* images.xcassets */,
 			);
+			name = IndoorNavigation;
 			path = "indoor navigation a";
 			sourceTree = "<group>";
 		};
@@ -307,7 +308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6QTSV772M5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "indoor navigation a/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,7 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6QTSV772M5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "indoor navigation a/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
