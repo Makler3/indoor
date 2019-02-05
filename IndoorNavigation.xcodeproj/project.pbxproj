@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		9CDF449722098E80000BECF9 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDF449622098E80000BECF9 /* images.xcassets */; };
+		C3A672C32209CBE400B254A3 /* Beacons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672AF2209CBE300B254A3 /* Beacons+CoreDataProperties.swift */; };
+		C3A672C42209CBE400B254A3 /* TableModule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B02209CBE300B254A3 /* TableModule.xcdatamodeld */; };
+		C3A672C52209CBE400B254A3 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B32209CBE300B254A3 /* CoreDataHelper.swift */; };
+		C3A672C62209CBE400B254A3 /* Floors+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B42209CBE300B254A3 /* Floors+CoreDataClass.swift */; };
+		C3A672C72209CBE400B254A3 /* Rooms+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B52209CBE300B254A3 /* Rooms+CoreDataClass.swift */; };
+		C3A672C82209CBE400B254A3 /* Edge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B62209CBE300B254A3 /* Edge+CoreDataClass.swift */; };
+		C3A672C92209CBE400B254A3 /* Beacons+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B72209CBE300B254A3 /* Beacons+CoreDataClass.swift */; };
+		C3A672CA2209CBE400B254A3 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B82209CBE400B254A3 /* Buildings+CoreDataProperties.swift */; };
+		C3A672CB2209CBE400B254A3 /* Campus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672B92209CBE400B254A3 /* Campus+CoreDataClass.swift */; };
+		C3A672CC2209CBE400B254A3 /* Rooms+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672BA2209CBE400B254A3 /* Rooms+CoreDataProperties.swift */; };
+		C3A672CD2209CBE400B254A3 /* Floors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672BB2209CBE400B254A3 /* Floors+CoreDataProperties.swift */; };
+		C3A672CE2209CBE400B254A3 /* Buildings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672BC2209CBE400B254A3 /* Buildings+CoreDataClass.swift */; };
+		C3A672CF2209CBE400B254A3 /* Edge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672BD2209CBE400B254A3 /* Edge+CoreDataProperties.swift */; };
+		C3A672D02209CBE400B254A3 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672BE2209CBE400B254A3 /* Session+CoreDataClass.swift */; };
+		C3A672D12209CBE400B254A3 /* Vertex+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672BF2209CBE400B254A3 /* Vertex+CoreDataClass.swift */; };
+		C3A672D22209CBE400B254A3 /* Vertex+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672C02209CBE400B254A3 /* Vertex+CoreDataProperties.swift */; };
+		C3A672D32209CBE400B254A3 /* Campus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672C12209CBE400B254A3 /* Campus+CoreDataProperties.swift */; };
+		C3A672D42209CBE400B254A3 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A672C22209CBE400B254A3 /* Session+CoreDataProperties.swift */; };
 		C8253D1422047481008FA557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D1322047481008FA557 /* AppDelegate.swift */; };
 		C8253D1622047481008FA557 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D1522047481008FA557 /* ViewController.swift */; };
 		C8253D1922047481008FA557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8253D1722047481008FA557 /* Main.storyboard */; };
@@ -22,6 +40,24 @@
 
 /* Begin PBXFileReference section */
 		9CDF449622098E80000BECF9 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		C3A672AF2209CBE300B254A3 /* Beacons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Beacons+CoreDataProperties.swift"; path = "../../TableData/Beacons+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672B12209CBE300B254A3 /* TableModule.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TableModule.xcdatamodel; sourceTree = "<group>"; };
+		C3A672B32209CBE300B254A3 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = ../../CoreDataApp/CoreDataHelper.swift; sourceTree = "<group>"; };
+		C3A672B42209CBE300B254A3 /* Floors+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Floors+CoreDataClass.swift"; path = "../../TableData/Floors+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672B52209CBE300B254A3 /* Rooms+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Rooms+CoreDataClass.swift"; path = "../../TableData/Rooms+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672B62209CBE300B254A3 /* Edge+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Edge+CoreDataClass.swift"; path = "../../TableData/Edge+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672B72209CBE300B254A3 /* Beacons+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Beacons+CoreDataClass.swift"; path = "../../TableData/Beacons+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672B82209CBE400B254A3 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Buildings+CoreDataProperties.swift"; path = "../../TableData/Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672B92209CBE400B254A3 /* Campus+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Campus+CoreDataClass.swift"; path = "../../TableData/Campus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672BA2209CBE400B254A3 /* Rooms+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Rooms+CoreDataProperties.swift"; path = "../../TableData/Rooms+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672BB2209CBE400B254A3 /* Floors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Floors+CoreDataProperties.swift"; path = "../../TableData/Floors+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672BC2209CBE400B254A3 /* Buildings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Buildings+CoreDataClass.swift"; path = "../../TableData/Buildings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672BD2209CBE400B254A3 /* Edge+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Edge+CoreDataProperties.swift"; path = "../../TableData/Edge+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672BE2209CBE400B254A3 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataClass.swift"; path = "../../TableData/Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672BF2209CBE400B254A3 /* Vertex+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Vertex+CoreDataClass.swift"; path = "../../TableData/Vertex+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3A672C02209CBE400B254A3 /* Vertex+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Vertex+CoreDataProperties.swift"; path = "../../TableData/Vertex+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672C12209CBE400B254A3 /* Campus+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Campus+CoreDataProperties.swift"; path = "../../TableData/Campus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C3A672C22209CBE400B254A3 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "../../TableData/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8253D1022047481008FA557 /* indoor navigation a.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "indoor navigation a.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8253D1322047481008FA557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8253D1522047481008FA557 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +102,24 @@
 		C8253D1222047481008FA557 /* IndoorNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				C3A672B72209CBE300B254A3 /* Beacons+CoreDataClass.swift */,
+				C3A672AF2209CBE300B254A3 /* Beacons+CoreDataProperties.swift */,
+				C3A672BF2209CBE400B254A3 /* Vertex+CoreDataClass.swift */,
+				C3A672C02209CBE400B254A3 /* Vertex+CoreDataProperties.swift */,
+				C3A672B42209CBE300B254A3 /* Floors+CoreDataClass.swift */,
+				C3A672BB2209CBE400B254A3 /* Floors+CoreDataProperties.swift */,
+				C3A672B62209CBE300B254A3 /* Edge+CoreDataClass.swift */,
+				C3A672BD2209CBE400B254A3 /* Edge+CoreDataProperties.swift */,
+				C3A672BE2209CBE400B254A3 /* Session+CoreDataClass.swift */,
+				C3A672C22209CBE400B254A3 /* Session+CoreDataProperties.swift */,
+				C3A672BC2209CBE400B254A3 /* Buildings+CoreDataClass.swift */,
+				C3A672B82209CBE400B254A3 /* Buildings+CoreDataProperties.swift */,
+				C3A672B92209CBE400B254A3 /* Campus+CoreDataClass.swift */,
+				C3A672C12209CBE400B254A3 /* Campus+CoreDataProperties.swift */,
+				C3A672B52209CBE300B254A3 /* Rooms+CoreDataClass.swift */,
+				C3A672BA2209CBE400B254A3 /* Rooms+CoreDataProperties.swift */,
+				C3A672B02209CBE300B254A3 /* TableModule.xcdatamodeld */,
+				C3A672B32209CBE300B254A3 /* CoreDataHelper.swift */,
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
 				C8F37C622204E943006A6BD9 /* Polygon.swift */,
 				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
@@ -154,10 +208,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A672C52209CBE400B254A3 /* CoreDataHelper.swift in Sources */,
 				C8253D2822048144008FA557 /* Graph.swift in Sources */,
+				C3A672CC2209CBE400B254A3 /* Rooms+CoreDataProperties.swift in Sources */,
+				C3A672CB2209CBE400B254A3 /* Campus+CoreDataClass.swift in Sources */,
 				C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */,
+				C3A672D02209CBE400B254A3 /* Session+CoreDataClass.swift in Sources */,
+				C3A672D32209CBE400B254A3 /* Campus+CoreDataProperties.swift in Sources */,
+				C3A672CE2209CBE400B254A3 /* Buildings+CoreDataClass.swift in Sources */,
+				C3A672CA2209CBE400B254A3 /* Buildings+CoreDataProperties.swift in Sources */,
+				C3A672C32209CBE400B254A3 /* Beacons+CoreDataProperties.swift in Sources */,
 				C8253D1622047481008FA557 /* ViewController.swift in Sources */,
+				C3A672C62209CBE400B254A3 /* Floors+CoreDataClass.swift in Sources */,
 				C8253D1422047481008FA557 /* AppDelegate.swift in Sources */,
+				C3A672CD2209CBE400B254A3 /* Floors+CoreDataProperties.swift in Sources */,
+				C3A672D12209CBE400B254A3 /* Vertex+CoreDataClass.swift in Sources */,
+				C3A672C92209CBE400B254A3 /* Beacons+CoreDataClass.swift in Sources */,
+				C3A672C42209CBE400B254A3 /* TableModule.xcdatamodeld in Sources */,
+				C3A672C72209CBE400B254A3 /* Rooms+CoreDataClass.swift in Sources */,
+				C3A672D42209CBE400B254A3 /* Session+CoreDataProperties.swift in Sources */,
+				C3A672C82209CBE400B254A3 /* Edge+CoreDataClass.swift in Sources */,
+				C3A672CF2209CBE400B254A3 /* Edge+CoreDataProperties.swift in Sources */,
+				C3A672D22209CBE400B254A3 /* Vertex+CoreDataProperties.swift in Sources */,
 				C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */,
 				C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */,
 				C8F37C632204E943006A6BD9 /* Polygon.swift in Sources */,
@@ -360,6 +432,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C3A672B02209CBE300B254A3 /* TableModule.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C3A672B12209CBE300B254A3 /* TableModule.xcdatamodel */,
+			);
+			currentVersion = C3A672B12209CBE300B254A3 /* TableModule.xcdatamodel */;
+			name = TableModule.xcdatamodeld;
+			path = ../../TableData/TableModule.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C8253D0822047481008FA557 /* Project object */;
 }
