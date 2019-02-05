@@ -79,8 +79,7 @@
 				C8253D1F22047482008FA557 /* Info.plist */,
 				9CDF449622098E80000BECF9 /* images.xcassets */,
 			);
-			name = IndoorNavigation;
-			path = "indoor navigation a";
+			path = IndoorNavigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
