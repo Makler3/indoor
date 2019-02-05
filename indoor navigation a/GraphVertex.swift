@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GraphVertex: Hashable {
+class GraphVertex: Hashable, Codable {
     
     var hashValue: Int {
         return identifier
@@ -19,13 +19,17 @@ class GraphVertex: Hashable {
     }
     
     var identifier : Int
+    var roomId: Int
+    var coordinates: [[Double]]
     
-    init(identifier: Int){
-        self.identifier = GraphVertex.GetUniqueIdentifier()
+    init(roomId: Int, coordinates: [[Double]]){
+        self.identifier = GraphVertex.getUniqueIdentifier()
+        self.coordinates = coordinates
+        self.roomId = roomId
     }
     
     private static var uniqueIdentifier = 0
-    private static func GetUniqueIdentifier() -> Int{
+    private static func getUniqueIdentifier() -> Int{
         uniqueIdentifier += 1
         return uniqueIdentifier
     }

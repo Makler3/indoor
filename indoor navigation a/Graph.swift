@@ -9,7 +9,7 @@
 import Foundation
 
 class Graph {
-    var adjacencyList = [GraphVertex : [(vertex: GraphVertex, length: Int)]] ()
+    var adjacencyList = [GraphVertex : [(vertex: GraphVertex, length: Double)]] ()
     
     init(edgesList: [GraphEdge], vertexesList: [GraphVertex]) {
         for currentEdge in edgesList {
@@ -20,9 +20,9 @@ class Graph {
         }
     }
     
-    func findShortestPathRunningDijkstra(start: GraphVertex, finish: GraphVertex) -> (Int?, [GraphVertex]) {
+    func findShortestPathRunningDijkstra(start: GraphVertex, finish: GraphVertex) -> (Double?, [GraphVertex]) {
         var usedVertexes = Set<GraphVertex>()
-        var distances = [GraphVertex : Int]()
+        var distances = [GraphVertex : Double]()
         var parents = [GraphVertex: GraphVertex]()
         
         distances[start] = 0
@@ -52,7 +52,7 @@ class Graph {
             usedVertexes.insert(currentVertex!)
             
             for connected in adjacencyList[currentVertex!] ?? Array() {
-                if (distances[connected.vertex] ?? Int(Double.infinity) > distances[currentVertex!]! + connected.length) {
+                if (distances[connected.vertex] ?? Double.infinity > distances[currentVertex!]! + connected.length) {
                     distances[connected.vertex] = distances[currentVertex!]! + connected.length
                     parents[connected.vertex] = currentVertex
                 }
