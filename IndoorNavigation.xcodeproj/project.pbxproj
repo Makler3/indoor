@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9CDF449722098E80000BECF9 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDF449622098E80000BECF9 /* images.xcassets */; };
-		9CDF449922098FF6000BECF9 /* Vadim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDF449822098FF6000BECF9 /* Vadim.storyboard */; };
 		C8253D1422047481008FA557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D1322047481008FA557 /* AppDelegate.swift */; };
 		C8253D1622047481008FA557 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D1522047481008FA557 /* ViewController.swift */; };
 		C8253D1922047481008FA557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8253D1722047481008FA557 /* Main.storyboard */; };
@@ -23,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		9CDF449622098E80000BECF9 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
-		9CDF449822098FF6000BECF9 /* Vadim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vadim.storyboard; sourceTree = "<group>"; };
 		C8253D1022047481008FA557 /* indoor navigation a.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "indoor navigation a.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8253D1322047481008FA557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8253D1522047481008FA557 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				C8253D1C22047482008FA557 /* LaunchScreen.storyboard */,
 				C8253D1F22047482008FA557 /* Info.plist */,
 				9CDF449622098E80000BECF9 /* images.xcassets */,
-				9CDF449822098FF6000BECF9 /* Vadim.storyboard */,
 			);
 			path = "indoor navigation a";
 			sourceTree = "<group>";
@@ -120,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C8253D0B22047481008FA557 /* Build configuration list for PBXProject "indoor navigation a" */;
+			buildConfigurationList = C8253D0B22047481008FA557 /* Build configuration list for PBXProject "IndoorNavigation" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -146,7 +143,6 @@
 				C8253D1E22047482008FA557 /* LaunchScreen.storyboard in Resources */,
 				9CDF449722098E80000BECF9 /* images.xcassets in Resources */,
 				C8253D1B22047482008FA557 /* Assets.xcassets in Resources */,
-				9CDF449922098FF6000BECF9 /* Vadim.storyboard in Resources */,
 				C8253D1922047481008FA557 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C8253D0B22047481008FA557 /* Build configuration list for PBXProject "indoor navigation a" */ = {
+		C8253D0B22047481008FA557 /* Build configuration list for PBXProject "IndoorNavigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C8253D2022047482008FA557 /* Debug */,
