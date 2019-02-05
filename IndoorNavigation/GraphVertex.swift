@@ -22,7 +22,6 @@ class GraphVertex: Hashable, Codable {
     var roomId: Int
     var coordinates: [[Double]]
     
-<<<<<<< Updated upstream
     init(roomId: Int, coordinates: [[Double]]){
         self.identifier = GraphVertex.getUniqueIdentifier()
         self.coordinates = coordinates
@@ -31,17 +30,11 @@ class GraphVertex: Hashable, Codable {
     
     private static var uniqueIdentifier = 0
     private static func getUniqueIdentifier() -> Int{
-=======
-    init(identifier: Int) {
-        self.identifier = GraphVertex.GetUniqueIdentifier()
-    }
-    
-    private static var uniqueIdentifier = 0
-    private static func GetUniqueIdentifier() -> Int {
->>>>>>> Stashed changes
         uniqueIdentifier += 1
         return uniqueIdentifier
     }
+    
+    
     
 }
 
