@@ -9,25 +9,27 @@
 import Foundation
 
 class Graph {
-    var adjacencyList = [GraphVertex : [(vertex: GraphVertex, length: Double)]] ()
+    var adjacencyList = [Vertex : [(vertex: Vertex, length: Double)]] ()
     
-    init(edgesList: [GraphEdge], vertexesList: [GraphVertex]) {
+    init(edgesList: [Edge], vertexesList: [Vertex]) {
         for currentEdge in edgesList {
-            if self.adjacencyList[currentEdge.from] == nil {
-                self.adjacencyList[currentEdge.from] = Array()
+            if let from = currentEdge.vertexfromrelationship, let to = currentEdge.vertextorelationship {
+                if self.adjacencyList[from] == nil {
+                    self.adjacencyList[from] = Array()
+                }
+                self.adjacencyList[from]!.append((to, currentEdge.distance))
             }
-            self.adjacencyList[currentEdge.from]!.append((currentEdge.to, currentEdge.length))
         }
     }
     
-    func findShortestPathRunningDijkstra(start: GraphVertex, finish: GraphVertex) -> (Double?, [GraphVertex]) {
-        var usedVertexes = Set<GraphVertex>()
-        var distances = [GraphVertex : Double]()
-        var parents = [GraphVertex: GraphVertex]()
+    func findShortestPathRunningDijkstra(start: Vertex, finish: Vertex) -> (Double?, [Vertex]) {
+        var usedVertexes = Set<Vertex>()
+        var distances = [Vertex : Double]()
+        var parents = [Vertex: Vertex]()
         
         distances[start] = 0
         while true {
-            var currentVertex: GraphVertex? = nil
+            var currentVertex: Vertex? = nil
             
             
             for probablyNewCurrentVertex in adjacencyList.keys {
@@ -64,7 +66,7 @@ class Graph {
         }
         
         var lastVertexInPath = finish
-        var shortestPath = [GraphVertex]()
+        var shortestPath = [Vertex]()
         while (lastVertexInPath != start) {
             shortestPath.append(lastVertexInPath)
             lastVertexInPath = parents[lastVertexInPath]!

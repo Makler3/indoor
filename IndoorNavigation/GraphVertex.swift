@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GraphVertex: Hashable, Codable {
+/*class GraphVertex: Hashable, Codable {
     
     var hashValue: Int {
         return identifier
@@ -33,8 +33,5 @@ class GraphVertex: Hashable, Codable {
         uniqueIdentifier += 1
         return uniqueIdentifier
     }
-    
-    
-    
-}
+}*/
 

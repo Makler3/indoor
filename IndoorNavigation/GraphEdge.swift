@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GraphEdge: Hashable, Codable {
+/*class GraphEdge: Hashable, Codable {
     
     var hashValue: Int {
         return identifier
@@ -38,4 +38,4 @@ class GraphEdge: Hashable, Codable {
         uniqueIdentifier += 1
         return uniqueIdentifier
     }
-}
+}*/

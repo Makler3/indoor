@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Beacons" representedClassName="Beacons" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coordinates" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="majorminor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="roomsrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rooms" inverseName="beaconsrelationship" inverseEntity="Rooms" syncable="YES"/>
+    </entity>
+    <entity name="Buildings" representedClassName="Buildings" syncable="YES">
+        <attribute name="adress" attributeType="String" defaultValueString="&quot;Sirius&quot;" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="campusrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Campus" inverseName="buildingsrelationship" inverseEntity="Campus" syncable="YES"/>
+        <relationship name="floorsrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Floors" inverseName="buildingsrelationship" inverseEntity="Floors" syncable="YES"/>
+    </entity>
+    <entity name="Campus" representedClassName="Campus" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="buildingsrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Buildings" inverseName="campusrelationship" inverseEntity="Buildings" syncable="YES"/>
+    </entity>
+    <entity name="Edge" representedClassName="Edge" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="doorscoordinates" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="vertexfromrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vertex" inverseName="edgefromrelationship" inverseEntity="Vertex" syncable="YES"/>
+        <relationship name="vertextorelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vertex" inverseName="edgetorelationship" inverseEntity="Vertex" syncable="YES"/>
+    </entity>
+    <entity name="Floors" representedClassName="Floors" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="buildingsrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Buildings" inverseName="floorsrelationship" inverseEntity="Buildings" syncable="YES"/>
+        <relationship name="roomsrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rooms" inverseName="floorsrelationship" inverseEntity="Rooms" syncable="YES"/>
+    </entity>
+    <entity name="Rooms" representedClassName="Rooms" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="polygon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="beaconsrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Beacons" inverseName="roomsrelationship" inverseEntity="Beacons" syncable="YES"/>
+        <relationship name="floorsrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floors" inverseName="roomsrelationship" inverseEntity="Floors" syncable="YES"/>
+        <relationship name="sessioinrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="roomsrelationship" inverseEntity="Session" syncable="YES"/>
+        <relationship name="vertexrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vertex" inverseName="roomsrelationship" inverseEntity="Vertex" syncable="YES"/>
+    </entity>
+    <entity name="Session" representedClassName="Session" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cordinates" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dt_end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dt_modification" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dt_start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="roomsrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rooms" inverseName="sessioinrelationship" inverseEntity="Rooms" syncable="YES"/>
+    </entity>
+    <entity name="Vertex" representedClassName="Vertex" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coordinates" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="edgefromrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Edge" inverseName="vertexfromrelationship" inverseEntity="Edge" syncable="YES"/>
+        <relationship name="edgetorelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Edge" inverseName="vertextorelationship" inverseEntity="Edge" syncable="YES"/>
+        <relationship name="roomsrelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rooms" inverseName="vertexrelationship" inverseEntity="Rooms" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Beacons" positionX="-247.41015625" positionY="134.28125" width="128" height="148"/>
+        <element name="Buildings" positionX="-88.21484375" positionY="-263.16015625" width="128" height="133"/>
+        <element name="Campus" positionX="-361.2578125" positionY="-248.2421875" width="159.3671875" height="103"/>
+        <element name="Floors" positionX="-84.58984375" positionY="-31.125" width="128" height="118"/>
+        <element name="Rooms" positionX="-337.9765625" positionY="-85.55078125" width="128" height="178"/>
+        <element name="Vertex" positionX="-547.82421875" positionY="-49.10546875" width="128" height="133"/>
+        <element name="Edge" positionX="-726.9375" positionY="-85.42578125" width="128" height="133"/>
+        <element name="Session" positionX="-385.17578125" positionY="132.3515625" width="128" height="148"/>
+    </elements>
+</model>

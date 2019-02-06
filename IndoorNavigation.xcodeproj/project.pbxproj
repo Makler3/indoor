@@ -16,6 +16,24 @@
 		C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2522047AD0008FA557 /* GraphEdge.swift */; };
 		C8253D2822048144008FA557 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2722048144008FA557 /* Graph.swift */; };
 		C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2922048BCF008FA557 /* GraphVertex.swift */; };
+		C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */; };
+		C8CEBA9D2209D71E00F77AF7 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */; };
+		C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */; };
+		C8CEBA9F2209D71E00F77AF7 /* Edge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */; };
+		C8CEBAA02209D71E00F77AF7 /* Campus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA952209D71E00F77AF7 /* Campus+CoreDataProperties.swift */; };
+		C8CEBAA12209D71E00F77AF7 /* Beacons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA962209D71E00F77AF7 /* Beacons+CoreDataProperties.swift */; };
+		C8CEBAA22209D71E00F77AF7 /* Beacons+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */; };
+		C8CEBAA32209D71E00F77AF7 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */; };
+		C8CEBAA42209D71E00F77AF7 /* Edge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA992209D71E00F77AF7 /* Edge+CoreDataProperties.swift */; };
+		C8CEBAA52209D71E00F77AF7 /* Floors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */; };
+		C8CEBAA62209D71E00F77AF7 /* Campus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */; };
+		C8CEBAAF2209D73F00F77AF7 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAA72209D73E00F77AF7 /* Session+CoreDataProperties.swift */; };
+		C8CEBAB02209D73F00F77AF7 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAA82209D73E00F77AF7 /* Session+CoreDataClass.swift */; };
+		C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAA92209D73F00F77AF7 /* Rooms+CoreDataClass.swift */; };
+		C8CEBAB22209D73F00F77AF7 /* Rooms+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAAA2209D73F00F77AF7 /* Rooms+CoreDataProperties.swift */; };
+		C8CEBAB32209D73F00F77AF7 /* Vertex+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */; };
+		C8CEBAB52209D73F00F77AF7 /* Vertex+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAAE2209D73F00F77AF7 /* Vertex+CoreDataProperties.swift */; };
+		C8CEBAB82209D76C00F77AF7 /* TableModule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAB62209D76C00F77AF7 /* TableModule.xcdatamodeld */; };
 		C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F37C602204DDA0006A6BD9 /* MapView.swift */; };
 		C8F37C632204E943006A6BD9 /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F37C622204E943006A6BD9 /* Polygon.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +50,24 @@
 		C8253D2522047AD0008FA557 /* GraphEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphEdge.swift; sourceTree = "<group>"; };
 		C8253D2722048144008FA557 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C8253D2922048BCF008FA557 /* GraphVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphVertex.swift; sourceTree = "<group>"; };
+		C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBA952209D71E00F77AF7 /* Campus+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Campus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBA962209D71E00F77AF7 /* Beacons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Beacons+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Beacons+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		C8CEBA992209D71E00F77AF7 /* Edge+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Campus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBAA72209D73E00F77AF7 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBAA82209D73E00F77AF7 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBAA92209D73F00F77AF7 /* Rooms+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rooms+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBAAA2209D73F00F77AF7 /* Rooms+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rooms+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vertex+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8CEBAAE2209D73F00F77AF7 /* Vertex+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vertex+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8CEBAB72209D76C00F77AF7 /* TableModule.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TableModule.xcdatamodel; sourceTree = "<group>"; };
 		C8F37C602204DDA0006A6BD9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C8F37C622204E943006A6BD9 /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +102,24 @@
 		C8253D1222047481008FA557 /* IndoorNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				C8CEBAB62209D76C00F77AF7 /* TableModule.xcdatamodeld */,
+				C8CEBAA92209D73F00F77AF7 /* Rooms+CoreDataClass.swift */,
+				C8CEBAAA2209D73F00F77AF7 /* Rooms+CoreDataProperties.swift */,
+				C8CEBAA82209D73E00F77AF7 /* Session+CoreDataClass.swift */,
+				C8CEBAA72209D73E00F77AF7 /* Session+CoreDataProperties.swift */,
+				C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */,
+				C8CEBAAE2209D73F00F77AF7 /* Vertex+CoreDataProperties.swift */,
+				C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */,
+				C8CEBA962209D71E00F77AF7 /* Beacons+CoreDataProperties.swift */,
+				C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */,
+				C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */,
+				C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */,
+				C8CEBA952209D71E00F77AF7 /* Campus+CoreDataProperties.swift */,
+				C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */,
+				C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */,
+				C8CEBA992209D71E00F77AF7 /* Edge+CoreDataProperties.swift */,
+				C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */,
+				C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */,
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
 				C8F37C622204E943006A6BD9 /* Polygon.swift */,
 				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
@@ -154,11 +208,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8CEBAA02209D71E00F77AF7 /* Campus+CoreDataProperties.swift in Sources */,
+				C8CEBA9D2209D71E00F77AF7 /* Buildings+CoreDataProperties.swift in Sources */,
 				C8253D2822048144008FA557 /* Graph.swift in Sources */,
+				C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */,
+				C8CEBAA62209D71E00F77AF7 /* Campus+CoreDataClass.swift in Sources */,
+				C8CEBAB32209D73F00F77AF7 /* Vertex+CoreDataClass.swift in Sources */,
+				C8CEBAB02209D73F00F77AF7 /* Session+CoreDataClass.swift in Sources */,
 				C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */,
+				C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */,
+				C8CEBAAF2209D73F00F77AF7 /* Session+CoreDataProperties.swift in Sources */,
+				C8CEBA9F2209D71E00F77AF7 /* Edge+CoreDataClass.swift in Sources */,
 				C8253D1622047481008FA557 /* ViewController.swift in Sources */,
+				C8CEBAB22209D73F00F77AF7 /* Rooms+CoreDataProperties.swift in Sources */,
 				C8253D1422047481008FA557 /* AppDelegate.swift in Sources */,
+				C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */,
+				C8CEBAA52209D71E00F77AF7 /* Floors+CoreDataProperties.swift in Sources */,
+				C8CEBAA22209D71E00F77AF7 /* Beacons+CoreDataClass.swift in Sources */,
+				C8CEBAA42209D71E00F77AF7 /* Edge+CoreDataProperties.swift in Sources */,
+				C8CEBAB52209D73F00F77AF7 /* Vertex+CoreDataProperties.swift in Sources */,
+				C8CEBAA12209D71E00F77AF7 /* Beacons+CoreDataProperties.swift in Sources */,
 				C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */,
+				C8CEBAB82209D76C00F77AF7 /* TableModule.xcdatamodeld in Sources */,
+				C8CEBAA32209D71E00F77AF7 /* CoreDataHelper.swift in Sources */,
 				C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */,
 				C8F37C632204E943006A6BD9 /* Polygon.swift in Sources */,
 			);
@@ -307,7 +379,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6QTSV772M5;
 				INFOPLIST_FILE = IndoorNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,7 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6QTSV772M5;
 				INFOPLIST_FILE = IndoorNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -360,6 +432,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C8CEBAB62209D76C00F77AF7 /* TableModule.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C8CEBAB72209D76C00F77AF7 /* TableModule.xcdatamodel */,
+			);
+			currentVersion = C8CEBAB72209D76C00F77AF7 /* TableModule.xcdatamodel */;
+			path = TableModule.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C8253D0822047481008FA557 /* Project object */;
 }

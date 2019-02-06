@@ -46,13 +46,8 @@ class MapView: UIView {
         }
     }
     
-    private var rooms:[Polygon] = [Polygon(points: [[0, 0], [3, 0], [3, 5], [0, 5]]), Polygon(points: [[7, 0], [11, 0], [11, 10], [7, 10]]), Polygon(points: [[3, 0], [7, 0], [7, 10], [3, 5]])]
-    
-    private var exits: [Int: [Polygon]] = [1: [Polygon(points: [[7, 1], [7, 2]]), Polygon(points: [[7, 4], [7, 6]])], 2: [Polygon(points: [[3, 2], [3, 3]])]]
-
-    private var vertexes: [(CGPoint, Double)] = [(CGPoint(x: 7, y: 5), 1), (CGPoint(x: 3, y: 2.5), 1)]
-    
     private func drawRooms(figures: [Polygon], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
+        
         for index in 0 ..< figures.count {
             figures[index].offset(dx: -minX, dy: -minY)
             figures[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
@@ -63,10 +58,10 @@ class MapView: UIView {
         
         for current in figures {
             let path = UIBezierPath()
-            path.move(to: CGPoint(x: current.points[0][0], y: current.points[0][1]))
-            path.addLine(to: CGPoint(x: current.points[1][0], y: current.points[1][1]))
-            path.addLine(to: CGPoint(x: current.points[2][0], y: current.points[2][1]))
-            path.addLine(to: CGPoint(x: current.points[3][0], y: current.points[3][1]))
+            path.move(to: CGPoint(x: current.points[0].x, y: current.points[0].y))
+            path.addLine(to: CGPoint(x: current.points[1].x, y: current.points[1].y))
+            path.addLine(to: CGPoint(x: current.points[2].x, y: current.points[2].y))
+            path.addLine(to: CGPoint(x: current.points[3].x, y: current.points[3].y))
             path.close()
             
             path.lineWidth = CGFloat(1.0)
@@ -77,27 +72,24 @@ class MapView: UIView {
         }
     }
     
-        private func drawExits(exits: [Int: [Polygon]], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
-        for key in exits.keys {
-            for index in 0 ..< exits[key]!.count {
-                exits[key]![index].offset(dx: -minX, dy: -minY)
-                exits[key]![index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
-                exits[key]![index].offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01)
-                exits[key]![index].adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
-                exits[key]![index].offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
-            }
+    private func drawExits(exits: [Polygon], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
+        
+        for index in 0 ..< exits.count {
+            exits[index].offset(dx: -minX, dy: -minY)
+            exits[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
+            exits[index].offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01)
+            exits[index].adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
+            exits[index].offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
         }
         
-        for key in exits.keys {
-            for index in 0 ..< exits[key]!.count {
-                let path = UIBezierPath()
-                path.move(to: CGPoint(x: exits[key]![index].points[0][0], y: exits[key]![index].points[0][1]))
-                path.addLine(to: CGPoint(x: exits[key]![index].points[1][0], y: exits[key]![index].points[1][1]))
-                
-                path.lineWidth = CGFloat(2.0)
-                UIColor.white.setStroke()
-                path.stroke()
-            }
+        for current in exits {
+            let path = UIBezierPath()
+            path.move(to: CGPoint(x: current.points[0].x, y: current.points[0].y))
+            path.addLine(to: CGPoint(x: current.points[1].x, y: current.points[1].y))
+            
+            path.lineWidth = CGFloat(2.0)
+            UIColor.white.setStroke()
+            path.stroke()
         }
     }
     
@@ -124,6 +116,14 @@ class MapView: UIView {
         return secondVertexesArray
     }
     
+    private var rooms: [Rooms] = [Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1)]
+    
+    private var vertexesOfFirstExit: [Vertex] = [Vertex(coordinates: "8 5", comment: nil), Vertex(coordinates: "6 5", comment: nil)]
+    private var vertexesOfSecondExit: [Vertex] = [Vertex(coordinates: "8 1.5", comment: nil), Vertex(coordinates: "6 1.5", comment: nil)]
+    private var vertexesOfThirdExit: [Vertex] = [Vertex(coordinates: "2 2.5", comment: nil), Vertex(coordinates: "4 2.5", comment: nil)]
+    
+    private lazy var exits: [Edge] = [Edge(distance: 0.5, vertexfromrelationship: vertexesOfFirstExit[0], vertextorelationship: vertexesOfFirstExit[1], doorscoordinates: "7 4 7 6", comment: nil), Edge(distance: 0.5, vertexfromrelationship: vertexesOfSecondExit[0], vertextorelationship: vertexesOfSecondExit[1], doorscoordinates: "7 1 7 2", comment: nil), Edge(distance: 0.5, vertexfromrelationship: vertexesOfThirdExit[0], vertextorelationship: vertexesOfThirdExit[1], doorscoordinates: "3 2 3 3", comment: nil)]
+    
     override func draw(_ rect: CGRect) {
         
         var minX = Double.infinity
@@ -132,20 +132,41 @@ class MapView: UIView {
         var maxY = -Double.infinity
         
         for current in rooms {
-            for point in current.points {
-                minX = min(minX, point[0])
-                maxX = max(maxX, point[0])
+            for point in current.parsePolygon()! {
+                minX = min(minX, point.x)
+                maxX = max(maxX, point.x)
             
-                minY = min(minY, point[1])
-                maxY = max(maxY, point[1])
+                minY = min(minY, point.y)
+                maxY = max(maxY, point.y)
             }
         }
         
         let ratioX = (Double(bounds.width) * 0.98) / (maxX - minX)
         let ratioY = (Double(bounds.height) * 0.98) / (maxY - minY)
-
-        drawRooms(figures: rooms, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
-        drawExits(exits: exits, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        
+        var roomsPolygons =  [Polygon]()
+        for room in rooms {
+            roomsPolygons.append(Polygon(points: room.parsePolygon()!))
+        }
+        drawRooms(figures: roomsPolygons, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        
+        var exitsLines = [Polygon]()
+        for exit in exits {
+            if let currentExit = exit.parseDoordsCoordinates() {
+                exitsLines.append(Polygon(points: currentExit))
+            }
+        }
+        drawExits(exits: exitsLines, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        
+        var vertexes = [(CGPoint, Double)]()
+        for current in exits {
+            if let point = current.vertexfromrelationship!.parseCoordinates() {
+                vertexes.append((CGPoint(x: point.x, y: point.y), 1))
+            }
+            if let point = current.vertextorelationship!.parseCoordinates() {
+                vertexes.append((CGPoint(x: point.x, y: point.y), 1))
+            }
+        }
         vertexes = drawPoints(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
     }
 }
@@ -167,15 +188,118 @@ extension CGPoint {
 extension Polygon {
     func offset(dx: Double, dy: Double) {
         for index in 0 ..< points.count {
-            points[index][0] += dx
-            points[index][1] += dy
+            points[index].x += dx
+            points[index].y += dy
         }
     }
     
     func adjustCoordinates(multiplierX: Double, multiplierY: Double) {
         for index in 0 ..< points.count {
-            points[index][0] *= multiplierX
-            points[index][1] *= multiplierY
+            points[index].x *= multiplierX
+            points[index].y *= multiplierY
         }
+    }
+}
+
+extension Vertex {
+    func parseCoordinates() -> (x: Double, y: Double)? {
+        var current = ""
+        
+        var coordinateX = 0.0
+        var coordinateY = 0.0
+        
+        for currentSymbol in coordinates {
+            if currentSymbol == Character(" ") {
+                coordinateX = Double(current)!
+                current = ""
+            }
+            else {
+                current.append(currentSymbol)
+            }
+        }
+        
+        coordinateY = Double(current)!
+        return (x: coordinateX, coordinateY)
+    }
+}
+
+extension Edge {
+    func parseDoordsCoordinates() -> [(x: Double, y: Double)]? {
+        
+        if doorscoordinates == nil {
+            return nil
+        }
+        
+        var current = ""
+        
+        var arrayToReturn = [(x: Double, y: Double)]()
+        
+        var coordinateX = 0.0
+        var coordinateY = 0.0
+        var numberOfCoordinatesFound = 0
+        for currentSymbol in doorscoordinates! {
+            if currentSymbol == Character(" ") {
+                numberOfCoordinatesFound += 1
+                
+                if numberOfCoordinatesFound % 2 == 1 {
+                    coordinateX = Double(current)!
+                }
+                else {
+                    coordinateY = Double(current)!
+                    arrayToReturn.append((x: coordinateX, y: coordinateY))
+                }
+                current = ""
+            }
+            else {
+                current.append(currentSymbol)
+            }
+        }
+        
+        if numberOfCoordinatesFound % 2 == 0 {
+            return nil
+        }
+        
+        coordinateY = Double(current)!
+        arrayToReturn.append((x: coordinateX, y: coordinateY))
+        
+        return arrayToReturn
+    }
+}
+
+extension Rooms {
+    func parsePolygon() -> [(x: Double, y: Double)]? {
+        var current = ""
+        
+        var arrayToReturn = [(x: Double, y: Double)]()
+        
+        var coordinateX = 0.0
+        var coordinateY = 0.0
+        var numberOfCoordinatesFound = 0
+        for currentSymbol in polygon {
+            if currentSymbol == Character(" ") {
+                numberOfCoordinatesFound += 1
+                
+                if numberOfCoordinatesFound % 2 == 1 {
+                    coordinateX = Double(current)!
+                }
+                else {
+                    coordinateY = Double(current)!
+                    arrayToReturn.append((x: coordinateX, y: coordinateY))
+                }
+                current = ""
+            }
+            else {
+                current.append(currentSymbol)
+            }
+        }
+        
+        if numberOfCoordinatesFound % 2 == 0 {
+            return nil
+        }
+        
+        coordinateY = Double(current)!
+        arrayToReturn.append((x: coordinateX, y: coordinateY))
+
+        return arrayToReturn
     }
 }
