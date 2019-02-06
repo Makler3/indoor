@@ -18,13 +18,7 @@ public class Vertex: NSManagedObject {
     convenience init() {
         self.init(entity: Vertex.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(coordinates: String, comment: String) {
-//        @NSManaged public var id: Int64
-//        @NSManaged public var coordinates: String?
-//        @NSManaged public var comment: String?
-//        @NSManaged public var roomsrelationship: Rooms?
-//        @NSManaged public var edgetorelationship: NSSet?
-//        @NSManaged public var edgefromrelationship: NSSet?
+    convenience init(coordinates: String, comment: String?) {
         self.init()
         self.id = Int64(Vertex.maximum())
         self.coordinates = coordinates
@@ -44,4 +38,6 @@ public class Vertex: NSManagedObject {
             return 1
         }
     }
+ 
+    
 }

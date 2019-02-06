@@ -17,7 +17,7 @@ class CoreDataHelper: NSObject {
     // An object representing a single object space or scratch pad that you use to fetch, create, and save managed objects.
 
     fileprivate override init() {
-        let modelURL = Bundle.main.url(forResource: "Model", withExtension: "momd")!
+        let modelURL = Bundle.main.url(forResource: "TableModule", withExtension: "momd")!
         let model = NSManagedObjectModel(contentsOf: modelURL)!
         
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)

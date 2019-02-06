@@ -52,7 +52,7 @@ public class Campus: NSManagedObject {
     convenience init() {
         self.init(entity: Campus.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(name: String, comment: String) {
+    convenience init(name: String?, comment: String?) {
 
         self.init()
         self.name = name

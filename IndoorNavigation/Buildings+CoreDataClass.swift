@@ -18,7 +18,7 @@ public class Buildings: NSManagedObject {
     convenience init() {
         self.init(entity: Buildings.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(name: String, comment: String, adress: String) {
+    convenience init(name: String?, comment: String?, adress: String?) {
         
         self.init()
         self.name = name

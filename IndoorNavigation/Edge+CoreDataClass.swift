@@ -18,16 +18,12 @@ public class Edge: NSManagedObject {
     convenience init() {
         self.init(entity: Edge.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(distance: Double, doorscoordinates: String, comment: String) {
-//        @NSManaged public var id: Int64
-//        @NSManaged public var distance: Double
-//        @NSManaged public var doorscoordinates: String?
-//        @NSManaged public var comment: String?
-//        @NSManaged public var vertexfromrelationship: Vertex?
-//        @NSManaged public var vertextorelationship: Vertex?
+    convenience init(distance: Double, vertexfromrelationship: Vertex, vertextorelationship: Vertex, doorscoordinates: String?, comment: String?) {
         self.init()
         self.id = Int64(Edge.maximum())
         self.distance = distance
+        self.vertextorelationship = vertextorelationship
+        self.vertexfromrelationship = vertexfromrelationship
         self.doorscoordinates = doorscoordinates
         self.comment = comment
     }

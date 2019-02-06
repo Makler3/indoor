@@ -8,20 +8,10 @@
 
 import Foundation
 
-/*class Polygon {
+class Polygon {
+    var points: [(x: Double, y: Double)]
     
-    var points = [(x: Double, y: Double)]()
-    
-    init(points: [(Double, Double)]) {
-        self.points = points
-    }
-    
-}*/
-
-class Polygon: Codable {
-    var points: [[Double]]
-    
-    init(points: [[Double]]) {
+    init(points: [(x: Double, y: Double)]) {
         self.points = points
     }
 }

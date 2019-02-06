@@ -20,7 +20,7 @@ extension Beacons {
     @NSManaged public var comment: String?
     @NSManaged public var id: Int64
     @NSManaged public var name: String?
-    @NSManaged public var coordinates: String?
+    @NSManaged public var coordinates: String
     @NSManaged public var majorminor: String?
     @NSManaged public var uuid: String?
     @NSManaged public var roomsrelationship: Rooms?

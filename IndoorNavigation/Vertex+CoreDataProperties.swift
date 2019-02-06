@@ -18,12 +18,16 @@ extension Vertex {
     }
 
     @NSManaged public var id: Int64
-    @NSManaged public var coordinates: String?
+    @NSManaged public var coordinates: String
     @NSManaged public var comment: String?
     @NSManaged public var roomsrelationship: Rooms?
     @NSManaged public var edgetorelationship: NSSet?
     @NSManaged public var edgefromrelationship: NSSet?
-
+    
+    // --------Ismagil's comment--------------
+    /*
+     coordinates example string: "3.0 3.1", "3 2", "0 0"
+    */
 }
 
 // MARK: Generated accessors for edgetorelationship

@@ -18,14 +18,7 @@ public class Beacons: NSManagedObject {
     convenience init() {
         self.init(entity: Beacons.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(name: String, coordinates: String, majorminor: String, uuid: String, comment: String) {
-//        @NSManaged public var comment: String?
-//        @NSManaged public var id: Int64
-//        @NSManaged public var name: String?
-//        @NSManaged public var coordinates: String?
-//        @NSManaged public var majorminor: String?
-//        @NSManaged public var uuid: String?
-//        @NSManaged public var roomsrelationship: Rooms?
+    convenience init(name: String?, coordinates: String, majorminor: String, uuid: String, comment: String?) {
         self.init()
         self.id = Int64(Beacons.maximum())
         self.name = name

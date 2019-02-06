@@ -18,7 +18,7 @@ extension Rooms {
     }
 
     @NSManaged public var comment: String?
-    @NSManaged public var polygon: String?
+    @NSManaged public var polygon: String
     @NSManaged public var id: Int64
     @NSManaged public var name: String?
     @NSManaged public var type: Int64
@@ -26,6 +26,12 @@ extension Rooms {
     @NSManaged public var floorsrelationship: Floors?
     @NSManaged public var sessioinrelationship: NSSet?
     @NSManaged public var vertexrelationship: NSSet?
+    
+    // --------Ismagil's comment--------------
+    /*
+     polygon example string: "3.0 3.1 2.0 4", "3 2 0 0", "0 0 0.0 1.4"
+     polygon always has even count of coordinates
+    */
 
 }
 
