@@ -22,7 +22,7 @@ class Graph {
         }
     }
     
-    func findShortestPathRunningDijkstra(start: Vertex, finish: Vertex) -> (Double?, [Vertex]) {
+    func findShortestPathRunningDijkstra(start: Vertex, finish: Rooms) -> (Double?, [Vertex]) {
         var usedVertexes = Set<Vertex>()
         var distances = [Vertex : Double]()
         var parents = [Vertex: Vertex]()
@@ -61,11 +61,26 @@ class Graph {
             }
         }
         
-        if distances[finish] == nil {
+        var finishVertex: Vertex? = nil
+        
+        for vertex in self.adjacencyList.keys {
+            if let room = vertex.roomsrelationship, usedVertexes.contains(vertex) {
+                if room == finish {
+                    if finishVertex == nil {
+                        finishVertex = vertex
+                    }
+                    else if distances[finishVertex!]! < distances[vertex]! {
+                        finishVertex = vertex
+                    }
+                }
+            }
+        }
+        
+        if finishVertex == nil {
             return (nil, Array())
         }
         
-        var lastVertexInPath = finish
+        var lastVertexInPath = finishVertex!
         var shortestPath = [Vertex]()
         while (lastVertexInPath != start) {
             shortestPath.append(lastVertexInPath)
@@ -74,6 +89,6 @@ class Graph {
         shortestPath.append(start)
         shortestPath.reverse()
         
-        return (distances[finish], shortestPath)
+        return (distances[finishVertex!], shortestPath)
     }
 }

@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
             endingLineNumber = "159"
-            landmarkName = "draw(_:)"
+            landmarkName = "drawPath(vertexes:minX:minY:maxX:maxY:ratioX:ratioY:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "draw(_:)"
+            landmarkName = "drawPoints(vertexes:minX:minY:maxX:maxY:ratioX:ratioY:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
