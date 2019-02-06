@@ -14,6 +14,9 @@ class MapView: UIView {
     var mapOffsetX: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
     var mapOffsetY: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
     
+    var needsPathBuild: Bool = false { didSet { setNeedsDisplay() } }
+    var pathVertexes: [Vertex]? = nil { didSet { setNeedsDisplay() } }
+    
     @objc func adjustMapScale(byHandlingGestureRecognizer recognizer: UIPinchGestureRecognizer) {
         switch recognizer.state {
         case .changed, .ended:
@@ -46,7 +49,12 @@ class MapView: UIView {
         }
     }
     
-    private func drawRooms(figures: [Polygon], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
+    private func drawRooms(rooms: [Rooms], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
+        
+        var figures =  [Polygon]()
+        for room in rooms {
+            figures.append(Polygon(points: room.parsePolygon()!))
+        }
         
         for index in 0 ..< figures.count {
             figures[index].offset(dx: -minX, dy: -minY)
@@ -72,17 +80,24 @@ class MapView: UIView {
         }
     }
     
-    private func drawExits(exits: [Polygon], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
+    private func drawExits(exits: [Edge], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
         
-        for index in 0 ..< exits.count {
-            exits[index].offset(dx: -minX, dy: -minY)
-            exits[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
-            exits[index].offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01)
-            exits[index].adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
-            exits[index].offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+        var exitsLines = [Polygon]()
+        for exit in exits {
+            if let currentExit = exit.parseDoordsCoordinates() {
+                exitsLines.append(Polygon(points: currentExit))
+            }
         }
         
-        for current in exits {
+        for index in exitsLines.indices {
+            exitsLines[index].offset(dx: -minX, dy: -minY)
+            exitsLines[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
+            exitsLines[index].offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01)
+            exitsLines[index].adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
+            exitsLines[index].offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+        }
+        
+        for current in exitsLines {
             let path = UIBezierPath()
             path.move(to: CGPoint(x: current.points[0].x, y: current.points[0].y))
             path.addLine(to: CGPoint(x: current.points[1].x, y: current.points[1].y))
@@ -93,17 +108,18 @@ class MapView: UIView {
         }
     }
     
-    private func drawPoints(vertexes: [(CGPoint, Double)], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) -> [(CGPoint, Double)] {
-        var secondVertexesArray: [(CGPoint, Double)] = vertexes
-         for index in 0 ..< vertexes.count {
-            let newVertexValue: (center: CGPoint, radius: Double) = (secondVertexesArray[index].0.offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY)), vertexes[index].1)
+    private func drawPoints(vertexes: [CGPoint], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) -> [CGPoint] {
+        
+        var secondVertexesArray = vertexes
+         for index in vertexes.indices {
+            let newVertexValue: CGPoint = secondVertexesArray[index].offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
              secondVertexesArray[index] = newVertexValue
          }
         
         for current in secondVertexesArray {
             let path = UIBezierPath()
             
-            path.addArc(withCenter: current.0, radius: CGFloat(current.1), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+            path.addArc(withCenter: current, radius: CGFloat(1), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
             path.close()
             
             path.lineWidth = CGFloat(1.0)
@@ -116,13 +132,33 @@ class MapView: UIView {
         return secondVertexesArray
     }
     
-    private var rooms: [Rooms] = [Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1)]
-    
-    private var vertexesOfFirstExit: [Vertex] = [Vertex(coordinates: "8 5", comment: nil), Vertex(coordinates: "6 5", comment: nil)]
-    private var vertexesOfSecondExit: [Vertex] = [Vertex(coordinates: "8 1.5", comment: nil), Vertex(coordinates: "6 1.5", comment: nil)]
-    private var vertexesOfThirdExit: [Vertex] = [Vertex(coordinates: "2 2.5", comment: nil), Vertex(coordinates: "4 2.5", comment: nil)]
-    
-    private lazy var exits: [Edge] = [Edge(distance: 0.5, vertexfromrelationship: vertexesOfFirstExit[0], vertextorelationship: vertexesOfFirstExit[1], doorscoordinates: "7 4 7 6", comment: nil), Edge(distance: 0.5, vertexfromrelationship: vertexesOfSecondExit[0], vertextorelationship: vertexesOfSecondExit[1], doorscoordinates: "7 1 7 2", comment: nil), Edge(distance: 0.5, vertexfromrelationship: vertexesOfThirdExit[0], vertextorelationship: vertexesOfThirdExit[1], doorscoordinates: "3 2 3 3", comment: nil)]
+    private func drawPath(vertexes: [CGPoint]?, minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
+        
+        if vertexes == nil {
+            return
+        }
+        if (vertexes?.count == 0) {
+            return
+        }
+        
+        var secondVertexesArray = vertexes!
+        for index in vertexes!.indices {
+            let newVertexValue: CGPoint = secondVertexesArray[index].offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+            secondVertexesArray[index] = newVertexValue
+        }
+        
+        let path = UIBezierPath()
+        let start = secondVertexesArray[0]
+        path.move(to: CGPoint(x: start.x, y: start.y))
+        
+        for current in secondVertexesArray {
+            path.addLine(to: CGPoint(x: current.x, y: current.y))
+        }
+        
+        path.lineWidth = CGFloat(1.0)
+        UIColor.blue.setStroke()
+        path.stroke()
+    }
     
     override func draw(_ rect: CGRect) {
         
@@ -131,7 +167,7 @@ class MapView: UIView {
         var minY = Double.infinity
         var maxY = -Double.infinity
         
-        for current in rooms {
+        for current in allRooms {
             for point in current.parsePolygon()! {
                 minX = min(minX, point.x)
                 maxX = max(maxX, point.x)
@@ -144,30 +180,48 @@ class MapView: UIView {
         let ratioX = (Double(bounds.width) * 0.98) / (maxX - minX)
         let ratioY = (Double(bounds.height) * 0.98) / (maxY - minY)
         
-        var roomsPolygons =  [Polygon]()
-        for room in rooms {
-            roomsPolygons.append(Polygon(points: room.parsePolygon()!))
-        }
-        drawRooms(figures: roomsPolygons, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        //--------Ismagil's comment----------
+        /*
+         all zoom and offset variables created
+        */
         
-        var exitsLines = [Polygon]()
-        for exit in exits {
-            if let currentExit = exit.parseDoordsCoordinates() {
-                exitsLines.append(Polygon(points: currentExit))
-            }
-        }
-        drawExits(exits: exitsLines, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        drawRooms(rooms: allRooms, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
         
-        var vertexes = [(CGPoint, Double)]()
-        for current in exits {
+        drawExits(exits: allEdges, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        
+        var vertexes = [CGPoint]()
+        for current in allEdges {
             if let point = current.vertexfromrelationship!.parseCoordinates() {
-                vertexes.append((CGPoint(x: point.x, y: point.y), 1))
+                vertexes.append(CGPoint(x: point.x, y: point.y))
             }
             if let point = current.vertextorelationship!.parseCoordinates() {
-                vertexes.append((CGPoint(x: point.x, y: point.y), 1))
+                vertexes.append(CGPoint(x: point.x, y: point.y))
             }
         }
         vertexes = drawPoints(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        
+        //--------Ismagil's comment----------
+        /*
+         map is created
+        */
+        
+        if needsPathBuild {
+            vertexes.removeAll()
+            if pathVertexes == nil {
+                return
+            }
+            if pathVertexes!.count == 0 {
+                return
+            }
+            
+            for current in pathVertexes! {
+                if let point = current.parseCoordinates() {
+                    vertexes.append(CGPoint(x: point.x, y: point.y))
+                }
+            }
+            
+            drawPath(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        }
     }
 }
 
