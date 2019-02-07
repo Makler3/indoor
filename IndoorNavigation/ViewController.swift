@@ -10,7 +10,7 @@ import UIKit
 
 private var allRooms: [[Rooms]] = [[Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)]]
 
-var allFloors: [Floors] = [Floors(roomsrelationship: NSSet(array: allRooms[0]), name: nil, comment: nil)]
+var allFloors: [Floors] = [Floors(roomsrelationship: NSSet(array: allRooms[0]), name: nil, comment: nil), Floors(roomsrelationship: nil, name: nil, comment: nil)]
 
 var allVertexes = [Vertex]()
 var allEdges = [Edge]()
@@ -31,6 +31,12 @@ class ViewController: UIViewController {
             mapView.needsPathBuild = true
         }
     }
+    @IBAction func floorStepper(_ sender: UIStepper) {
+        mapView.currentFloor = allFloors[Int(sender.value)]
+        currentFloorLabel.text = "Floor: \(Int(sender.value))"
+    }
+    
+    @IBOutlet weak var currentFloorLabel: UILabel!
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)

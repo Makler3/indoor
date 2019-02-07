@@ -20,8 +20,28 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqu-er-FGv" customClass="MapView" customModule="indoor_navigation_a" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CZV-j1-eOb">
+                                        <rect key="frame" x="140.66666666666666" y="685" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="floorStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="q8W-5D-nCT"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Floor: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-ke-M2E">
+                                        <rect key="frame" x="161.33333333333334" y="659" width="52.333333333333343" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="CZV-j1-eOb" firstAttribute="top" secondItem="9aa-ke-M2E" secondAttribute="bottom" constant="8" symbolic="YES" id="Kq7-8W-f8S"/>
+                                    <constraint firstAttribute="bottom" secondItem="CZV-j1-eOb" secondAttribute="bottom" constant="20" symbolic="YES" id="VaT-Mv-BVb"/>
+                                    <constraint firstItem="9aa-ke-M2E" firstAttribute="centerX" secondItem="Vqu-er-FGv" secondAttribute="centerX" id="WPB-fb-VQs"/>
+                                    <constraint firstItem="CZV-j1-eOb" firstAttribute="centerX" secondItem="Vqu-er-FGv" secondAttribute="centerX" id="b4l-DS-uMO"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,6 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="currentFloorLabel" destination="9aa-ke-M2E" id="fHT-7K-WkL"/>
                         <outlet property="mapView" destination="Vqu-er-FGv" id="usH-aj-mA1"/>
                     </connections>
                 </viewController>
