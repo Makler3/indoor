@@ -24,5 +24,10 @@ extension Session {
     @NSManaged public var dt_modification: NSDate?
     @NSManaged public var comment: String?
     @NSManaged public var roomsrelationship: Rooms?
+    
+    // --------Ismagil's comment--------------
+    /*
+     coordinates example string: "3.0 3.1", "3 2", "0 0"
+    */
 
 }

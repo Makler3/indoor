@@ -77,9 +77,9 @@ class MapView: UIView {
             path.close()
             
             path.lineWidth = CGFloat(3.0)
-            //UIColor.blue.setFill()
+            #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).setFill()
             UIColor.black.setStroke()
-            //path.fill()
+            path.fill()
             path.stroke()
         }
     }
@@ -177,6 +177,11 @@ class MapView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        
+        print(circlesIntersection(first: (x: 3, y: 4, r: 5), second: (x: 11, y: 4, r: 2)) ?? "gg")
+        print(circlesIntersection(first: (x: 3, y: 4, r: 5), second: (x: 11, y: 4, r: 3)) ?? "gg")
+        print(circlesIntersection(first: (x: 0, y: 0, r: 5), second: (x: 6, y: 0, r: 5)) ?? "gg")
+        print("----------------------")
         
         var minX = Double.infinity
         var maxX = -Double.infinity
@@ -314,6 +319,29 @@ extension Vertex {
         return (x: coordinateX, coordinateY)
     }
 }
+
+extension Beacons {
+    func parseCoordinates() -> (x: Double, y: Double)? {
+        var current = ""
+        
+        var coordinateX = 0.0
+        var coordinateY = 0.0
+        
+        for currentSymbol in coordinates {
+            if currentSymbol == Character(" ") {
+                coordinateX = Double(current)!
+                current = ""
+            }
+            else {
+                current.append(currentSymbol)
+            }
+        }
+        
+        coordinateY = Double(current)!
+        return (x: coordinateX, coordinateY)
+    }
+}
+
 
 extension Edge {
     func parseDoorsCoordinates() -> [(x: Double, y: Double)]? {

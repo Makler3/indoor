@@ -16,6 +16,7 @@
 		C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2522047AD0008FA557 /* GraphEdge.swift */; };
 		C8253D2822048144008FA557 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2722048144008FA557 /* Graph.swift */; };
 		C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2922048BCF008FA557 /* GraphVertex.swift */; };
+		C854C452220C7E8700E28A81 /*  Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C451220C7E8700E28A81 /*  Geometry.swift */; };
 		C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */; };
 		C8CEBA9D2209D71E00F77AF7 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */; };
 		C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */; };
@@ -50,6 +51,7 @@
 		C8253D2522047AD0008FA557 /* GraphEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphEdge.swift; sourceTree = "<group>"; };
 		C8253D2722048144008FA557 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C8253D2922048BCF008FA557 /* GraphVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphVertex.swift; sourceTree = "<group>"; };
+		C854C451220C7E8700E28A81 /*  Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Geometry.swift"; sourceTree = "<group>"; };
 		C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */,
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
 				C8F37C622204E943006A6BD9 /* Polygon.swift */,
+				C854C451220C7E8700E28A81 /*  Geometry.swift */,
 				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
 				C8253D2722048144008FA557 /* Graph.swift */,
 				C8253D2922048BCF008FA557 /* GraphVertex.swift */,
@@ -168,6 +171,7 @@
 				TargetAttributes = {
 					C8253D0F22047481008FA557 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -224,6 +228,7 @@
 				C8253D1422047481008FA557 /* AppDelegate.swift in Sources */,
 				C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */,
 				C8CEBAA52209D71E00F77AF7 /* Floors+CoreDataProperties.swift in Sources */,
+				C854C452220C7E8700E28A81 /*  Geometry.swift in Sources */,
 				C8CEBAA22209D71E00F77AF7 /* Beacons+CoreDataClass.swift in Sources */,
 				C8CEBAA42209D71E00F77AF7 /* Edge+CoreDataProperties.swift in Sources */,
 				C8CEBAB52209D73F00F77AF7 /* Vertex+CoreDataProperties.swift in Sources */,
@@ -378,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QTSV772M5;
 				INFOPLIST_FILE = IndoorNavigation/Info.plist;
@@ -387,6 +393,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.hse.ismagilsaifutdinov.indoor-navigation-a";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -396,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QTSV772M5;
 				INFOPLIST_FILE = IndoorNavigation/Info.plist;

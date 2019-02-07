@@ -24,5 +24,10 @@ extension Beacons {
     @NSManaged public var majorminor: String?
     @NSManaged public var uuid: String?
     @NSManaged public var roomsrelationship: Rooms?
+    
+    // --------Ismagil's comment--------------
+    /*
+     coordinates example string: "3.0 3.1", "3 2", "0 0"
+    */
 
 }

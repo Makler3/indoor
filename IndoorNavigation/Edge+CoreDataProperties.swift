@@ -23,5 +23,11 @@ extension Edge {
     @NSManaged public var comment: String?
     @NSManaged public var vertexfromrelationship: Vertex?
     @NSManaged public var vertextorelationship: Vertex?
+    
+    // --------Ismagil's comment--------------
+    /*
+     doorscoordinates example string: "3.0 3.1 2 0", "3 2 0 0"
+     doorscoordinates always has 4 coordinates
+    */
 
 }

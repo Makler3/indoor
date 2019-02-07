@@ -14,4 +14,5 @@ class Polygon {
     init(points: [(x: Double, y: Double)]) {
         self.points = points
     }
+    
 }
