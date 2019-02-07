@@ -8,7 +8,9 @@
 
 import UIKit
 
-var allRooms: [Rooms] = [Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)]
+private var allRooms: [[Rooms]] = [[Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)]]
+
+var allFloors: [Floors] = [Floors(roomsrelationship: NSSet(array: allRooms[0]), name: nil, comment: nil)]
 
 var allVertexes = [Vertex]()
 var allEdges = [Edge]()
@@ -16,8 +18,6 @@ var allEdges = [Edge]()
 private var graph: Graph = Graph(edgesList: allEdges, vertexesList: allVertexes)
 
 class ViewController: UIViewController {
-    
-    
     
     @IBOutlet weak var mapView: MapView! {
         didSet {
@@ -29,8 +29,13 @@ class ViewController: UIViewController {
             mapView.addGestureRecognizer(pan)
             
             mapView.needsPathBuild = true
-            //mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: , finish: <#T##Rooms#>)
         }
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+
+        self.mapView.mapScale *= 1
     }
     
     override func viewDidLoad() {
@@ -43,12 +48,12 @@ class ViewController: UIViewController {
         allVertexes.append(Vertex(coordinates: "6 5", comment: nil))
         allVertexes.append(Vertex(coordinates: "8 5", comment: nil))
         
-        allVertexes[0].roomsrelationship = allRooms[0]
-        allVertexes[1].roomsrelationship = allRooms[1]
-        allVertexes[2].roomsrelationship = allRooms[1]
-        allVertexes[3].roomsrelationship = allRooms[2]
-        allVertexes[4].roomsrelationship = allRooms[1]
-        allVertexes[5].roomsrelationship = allRooms[2]
+        allVertexes[0].roomsrelationship = allRooms[0][0]
+        allVertexes[1].roomsrelationship = allRooms[0][1]
+        allVertexes[2].roomsrelationship = allRooms[0][1]
+        allVertexes[3].roomsrelationship = allRooms[0][2]
+        allVertexes[4].roomsrelationship = allRooms[0][1]
+        allVertexes[5].roomsrelationship = allRooms[0][2]
         
         allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[0], vertextorelationship: allVertexes[1], doorscoordinates: "3 2 3 3", comment: nil))
         allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[1], vertextorelationship: allVertexes[0], doorscoordinates: nil, comment: nil))
@@ -69,7 +74,7 @@ class ViewController: UIViewController {
         allEdges.append(Edge(distance: 100, vertexfromrelationship: allVertexes[1], vertextorelationship: allVertexes[4], doorscoordinates: nil, comment: nil))
         allEdges.append(Edge(distance: 100, vertexfromrelationship: allVertexes[4], vertextorelationship: allVertexes[1], doorscoordinates: nil, comment: nil))
         
-        mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: allVertexes[5], finish: allRooms[0]).1
+        mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: allVertexes[5], finish: allRooms[0][0]).1
         mapView.needsPathBuild = true
     }
 

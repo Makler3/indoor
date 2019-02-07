@@ -18,9 +18,10 @@ public class Floors: NSManagedObject {
     convenience init() {
         self.init(entity: Floors.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(name: String?, comment: String?) {
+    convenience init(roomsrelationship: NSSet?, name: String?, comment: String?) {
         
         self.init()
+        self.roomsrelationship = roomsrelationship
         self.name = name
         self.id = Int64(Floors.maximum())
         self.comment = comment

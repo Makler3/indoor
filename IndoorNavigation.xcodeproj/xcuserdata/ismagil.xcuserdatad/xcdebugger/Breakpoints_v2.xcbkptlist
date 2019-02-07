@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/MapView.swift"
-            timestampString = "571132430.3682849"
+            timestampString = "571217551.378469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "drawPath(vertexes:minX:minY:maxX:maxY:ratioX:ratioY:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IndoorNavigation/MapView.swift"
-            timestampString = "571132430.368703"
+            timestampString = "571217551.378535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "drawPoints(vertexes:minX:minY:maxX:maxY:ratioX:ratioY:)"
             landmarkType = "7">
          </BreakpointContent>

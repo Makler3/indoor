@@ -17,6 +17,8 @@ class MapView: UIView {
     var needsPathBuild: Bool = false { didSet { setNeedsDisplay() } }
     var pathVertexes: [Vertex]? = nil { didSet { setNeedsDisplay() } }
     
+    var currentFloor: Floors = allFloors[0] { didSet { setNeedsDisplay() } }
+    
     @objc func adjustMapScale(byHandlingGestureRecognizer recognizer: UIPinchGestureRecognizer) {
         switch recognizer.state {
         case .changed, .ended:
@@ -51,6 +53,8 @@ class MapView: UIView {
     
     private func drawRooms(rooms: [Rooms], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
         
+        let magic = min(bounds.width, bounds.height)
+        
         var figures =  [Polygon]()
         for room in rooms {
             figures.append(Polygon(points: room.parsePolygon()!))
@@ -59,7 +63,7 @@ class MapView: UIView {
         for index in 0 ..< figures.count {
             figures[index].offset(dx: -minX, dy: -minY)
             figures[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
-            figures[index].offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01)
+            figures[index].offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01)
             figures[index].adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
             figures[index].offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
         }
@@ -72,7 +76,7 @@ class MapView: UIView {
             path.addLine(to: CGPoint(x: current.points[3].x, y: current.points[3].y))
             path.close()
             
-            path.lineWidth = CGFloat(1.0)
+            path.lineWidth = CGFloat(3.0)
             //UIColor.blue.setFill()
             UIColor.black.setStroke()
             //path.fill()
@@ -82,17 +86,25 @@ class MapView: UIView {
     
     private func drawExits(exits: [Edge], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
         
+        let magic = min(bounds.width, bounds.height)
+        
         var exitsLines = [Polygon]()
         for exit in exits {
-            if let currentExit = exit.parseDoordsCoordinates() {
-                exitsLines.append(Polygon(points: currentExit))
+            if let currentExit = exit.parseDoorsCoordinates() {
+                if let from = exit.vertexfromrelationship, let to = exit.vertextorelationship {
+                    if let fromRoom = from.roomsrelationship, let toRoom = to.roomsrelationship {
+                        if fromRoom.floorsrelationship == currentFloor, toRoom.floorsrelationship == currentFloor {
+                            exitsLines.append(Polygon(points: currentExit))
+                        }
+                    }
+                }
             }
         }
         
         for index in exitsLines.indices {
             exitsLines[index].offset(dx: -minX, dy: -minY)
             exitsLines[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
-            exitsLines[index].offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01)
+            exitsLines[index].offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01)
             exitsLines[index].adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale))
             exitsLines[index].offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
         }
@@ -110,19 +122,21 @@ class MapView: UIView {
     
     private func drawPoints(vertexes: [CGPoint], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) -> [CGPoint] {
         
+        let magic = min(bounds.width, bounds.height)
+        
         var secondVertexesArray = vertexes
          for index in vertexes.indices {
-            let newVertexValue: CGPoint = secondVertexesArray[index].offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+            let newVertexValue: CGPoint = secondVertexesArray[index].offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
              secondVertexesArray[index] = newVertexValue
          }
         
         for current in secondVertexesArray {
             let path = UIBezierPath()
             
-            path.addArc(withCenter: current, radius: CGFloat(1), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+            path.addArc(withCenter: current, radius: CGFloat(4), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
             path.close()
             
-            path.lineWidth = CGFloat(1.0)
+            path.lineWidth = CGFloat(2.0)
             UIColor.blue.setFill()
             UIColor.black.setStroke()
             path.fill()
@@ -141,9 +155,11 @@ class MapView: UIView {
             return
         }
         
+        let magic = min(bounds.width, bounds.height)
+        
         var secondVertexesArray = vertexes!
         for index in vertexes!.indices {
-            let newVertexValue: CGPoint = secondVertexesArray[index].offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(bounds.width) * 0.01, dy: Double(bounds.height) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
+            let newVertexValue: CGPoint = secondVertexesArray[index].offset(dx: -minX, dy: -minY).adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY).offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01).adjustCoordinates(multiplierX: Double(mapScale), multiplierY: Double(mapScale)).offset(dx: -Double(mapOffsetX), dy: -Double(mapOffsetY))
             secondVertexesArray[index] = newVertexValue
         }
         
@@ -155,7 +171,7 @@ class MapView: UIView {
             path.addLine(to: CGPoint(x: current.x, y: current.y))
         }
         
-        path.lineWidth = CGFloat(1.0)
+        path.lineWidth = CGFloat(3.0)
         UIColor.blue.setStroke()
         path.stroke()
     }
@@ -167,8 +183,8 @@ class MapView: UIView {
         var minY = Double.infinity
         var maxY = -Double.infinity
         
-        for current in allRooms {
-            for point in current.parsePolygon()! {
+        for current in currentFloor.roomsrelationship! {
+            for point in (current as! Rooms).parsePolygon()! {
                 minX = min(minX, point.x)
                 maxX = max(maxX, point.x)
             
@@ -177,32 +193,50 @@ class MapView: UIView {
             }
         }
         
-        let ratioX = (Double(bounds.width) * 0.98) / (maxX - minX)
-        let ratioY = (Double(bounds.height) * 0.98) / (maxY - minY)
+        let magic = min(bounds.width, bounds.height)
+        
+        let ratioX = (Double(magic) * 0.98) / (maxX - minX)
+        let ratioY = (Double(magic) * 0.98) / (maxY - minY)
         
         //--------Ismagil's comment----------
         /*
          all zoom and offset variables created
         */
         
-        drawRooms(rooms: allRooms, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
+        var rooms =  [Rooms]()
+        
+        for current in currentFloor.roomsrelationship! {
+            if let room = current as? Rooms {
+                rooms.append(room)
+            }
+        }
+        
+        drawRooms(rooms: rooms, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
         
         drawExits(exits: allEdges, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
         
         var vertexes = [CGPoint]()
         for current in allEdges {
-            if let point = current.vertexfromrelationship!.parseCoordinates() {
-                vertexes.append(CGPoint(x: point.x, y: point.y))
+            if let vertex = current.vertexfromrelationship {
+                if let room = vertex.roomsrelationship {
+                    if room.floorsrelationship == currentFloor, let point = vertex.parseCoordinates() {
+                        vertexes.append(CGPoint(x: point.x, y: point.y))
+                    }
+                }
             }
-            if let point = current.vertextorelationship!.parseCoordinates() {
-                vertexes.append(CGPoint(x: point.x, y: point.y))
+            if let vertex = current.vertextorelationship {
+                if let room = vertex.roomsrelationship {
+                    if room.floorsrelationship == currentFloor, let point = vertex.parseCoordinates() {
+                        vertexes.append(CGPoint(x: point.x, y: point.y))
+                    }
+                }
             }
         }
         vertexes = drawPoints(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
         
         //--------Ismagil's comment----------
         /*
-         map is created
+         map is drawn
         */
         
         if needsPathBuild {
@@ -215,8 +249,12 @@ class MapView: UIView {
             }
             
             for current in pathVertexes! {
-                if let point = current.parseCoordinates() {
-                    vertexes.append(CGPoint(x: point.x, y: point.y))
+                if let room = current.roomsrelationship {
+                    if room.floorsrelationship == currentFloor {
+                        if let point = current.parseCoordinates() {
+                            vertexes.append(CGPoint(x: point.x, y: point.y))
+                        }
+                    }
                 }
             }
             
@@ -278,7 +316,7 @@ extension Vertex {
 }
 
 extension Edge {
-    func parseDoordsCoordinates() -> [(x: Double, y: Double)]? {
+    func parseDoorsCoordinates() -> [(x: Double, y: Double)]? {
         
         if doorscoordinates == nil {
             return nil
