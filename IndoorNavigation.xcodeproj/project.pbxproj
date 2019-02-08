@@ -17,6 +17,7 @@
 		C8253D2822048144008FA557 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2722048144008FA557 /* Graph.swift */; };
 		C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2922048BCF008FA557 /* GraphVertex.swift */; };
 		C854C452220C7E8700E28A81 /*  Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C451220C7E8700E28A81 /*  Geometry.swift */; };
+		C854C454220D7D1600E28A81 /* BeaconSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C453220D7D1600E28A81 /* BeaconSupport.swift */; };
 		C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */; };
 		C8CEBA9D2209D71E00F77AF7 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */; };
 		C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */; };
@@ -52,6 +53,7 @@
 		C8253D2722048144008FA557 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C8253D2922048BCF008FA557 /* GraphVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphVertex.swift; sourceTree = "<group>"; };
 		C854C451220C7E8700E28A81 /*  Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Geometry.swift"; sourceTree = "<group>"; };
+		C854C453220D7D1600E28A81 /* BeaconSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconSupport.swift; sourceTree = "<group>"; };
 		C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
 				C8F37C622204E943006A6BD9 /* Polygon.swift */,
 				C854C451220C7E8700E28A81 /*  Geometry.swift */,
+				C854C453220D7D1600E28A81 /* BeaconSupport.swift */,
 				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
 				C8253D2722048144008FA557 /* Graph.swift */,
 				C8253D2922048BCF008FA557 /* GraphVertex.swift */,
@@ -218,6 +221,7 @@
 				C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */,
 				C8CEBAA62209D71E00F77AF7 /* Campus+CoreDataClass.swift in Sources */,
 				C8CEBAB32209D73F00F77AF7 /* Vertex+CoreDataClass.swift in Sources */,
+				C854C454220D7D1600E28A81 /* BeaconSupport.swift in Sources */,
 				C8CEBAB02209D73F00F77AF7 /* Session+CoreDataClass.swift in Sources */,
 				C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */,
 				C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */,

@@ -92,7 +92,7 @@ func getPointFromThreeCircles(circles: [(x: Double, y: Double, r: Double)]) -> (
     return (x: sumOfAllResults.x / Double(count), y: sumOfAllResults.y / Double(count))
 }
 
-func getPointFromBeaconDistances(beacons: [(x: Double, y: Double, r: Double)]?) -> (x: Double, y: Double)? {
+/*func getPointFromBeaconDistances(beacons: [(x: Double, y: Double, r: Double)]?) -> (x: Double, y: Double)? {
     var sumOfAllResults = (x: 0.0, y: 0.0)
     var count = 0
     
@@ -130,4 +130,4 @@ func getPointFromBeaconDistances(beacons: [(x: Double, y: Double, r: Double)]?) 
     }
     
     return nil
-}
+}*/

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import CoreBluetooth
 
 private var allRooms: [[Rooms]] = [[Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)], [Rooms(comment: nil, polygon: "2 3 5 3 5 6 2 6", name: nil, type: 1), Rooms(comment: nil, polygon: "5 3 8 3 8 9 5 9", name: nil, type: 1)]]
 
@@ -17,7 +19,9 @@ var allEdges = [Edge]()
 
 private var graph: Graph = Graph(edgesList: allEdges, vertexesList: allVertexes)
 
-class ViewController: UIViewController {
+//private var beaconsFromMinor = [Int: (CLBeacon, Beacons)]()
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MapView! {
         didSet {
@@ -44,6 +48,8 @@ class ViewController: UIViewController {
         self.mapView.mapScale *= 1
     }
     
+    let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,9 +105,98 @@ class ViewController: UIViewController {
         
         mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: allVertexes[5], finish: allRooms[1][1]).1
         mapView.needsPathBuild = true
+        
+        locationManager.delegate = self
+        //locationManager.requestAlwaysAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse) {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        //locationManager.startRangingBeaconsInRegion(region)
     }
-
     
-    //check git
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+                //print("CLLocationManager.isMonitoringAvailable == true")
+                if CLLocationManager.isRangingAvailable() {
+                    //print("CLLocationManager.isRangingAvailable == true")
+                    startScanning()
+                }
+            }
+        }
+    }
+    
+    func startScanning() {
+        let uuid = UUID(uuidString: "10F86430-1346-11E4-9191-0800200C9A66")! // Fine // last digit was 5 early
+        //E2 C5 6D B5 DF FB 48 D2 B0 60 D0 F5 A7 10 96 E0
+        
+        //        let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: 34832, minor: 34833, identifier: "brf0") // fine
+        
+        let beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "brf0")
+        locationManager.startMonitoring(for: beaconRegion)
+        locationManager.startRangingBeacons(in: beaconRegion)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        //print(beacons)
+        
+        var coordinates = ["2 3", "5 6"]
+        var iteration = 0
+        if beacons.count > 0 {
+            //updateDistance(beacons[0].proximity)
+            
+            // major 123 minor 1
+            var allBeacons = [(Int, Beacons)]()
+            for current in beacons {
+                let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
+                var distance: Int
+                if current.proximity == .immediate {
+                    distance = 0
+                }
+                else if current.proximity == .near {
+                    distance = 1
+                }
+                else if current.proximity == .far {
+                    distance = 2
+                }
+                else {
+                    distance = 3
+                }
+                
+                allBeacons.append((distance, Beacons(name: nil, coordinates: coordinates[iteration], majorminor: majorminor, uuid: "10F86430-1346-11E4-9191-0800200C9A66", comment: nil)))
+                allBeacons.last!.1.roomsrelationship = allRooms[1][0]
+                iteration += 1
+                
+                //beaconsFromMinor[allBeacons.last!.parseMajorMinor().minor!] = (beacons[0], allBeacons[0])
+            }
+            
+            mapView.findLocation(allBeacons)
+            
+            //print(beacon.accuracy)
+            //print(distanceFromRSSI(rssi: beacon.rssi) ?? "nil")
+        }
+        else {
+            mapView.findLocation(Array())
+            updateDistance(.unknown)
+        }
+    }
+    
+    func updateDistance(_ distance: CLProximity) {
+        UIView.animate(withDuration: 0.1, animations: {
+            
+            switch distance {
+            case .unknown:
+                self.mapView!.backgroundColor = UIColor.darkGray
+            case .far:
+                self.mapView!.backgroundColor = UIColor.red
+            case .near:
+                self.mapView!.backgroundColor = UIColor.orange
+            case .immediate:
+                self.mapView!.backgroundColor = UIColor.green
+            }
+        })
+    }
+    
 }
 

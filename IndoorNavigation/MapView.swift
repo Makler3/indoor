@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MapView: UIView {
     
     var mapScale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
-    var mapOffsetX: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
-    var mapOffsetY: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
+    private var mapOffsetX: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
+    private var mapOffsetY: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
     
     var needsPathBuild: Bool = false { didSet { setNeedsDisplay() } }
     var pathVertexes: [Vertex]? = nil { didSet { setNeedsDisplay() } }
     
     var currentFloor: Floors = allFloors[0] { didSet { setNeedsDisplay() } }
+    
+    private var currentPosition: CGPoint? = nil { didSet { setNeedsDisplay() } }
+    
+    private var drawCurrentPosition = false
+    
     
     @objc func adjustMapScale(byHandlingGestureRecognizer recognizer: UIPinchGestureRecognizer) {
         switch recognizer.state {
@@ -49,6 +55,33 @@ class MapView: UIView {
         default:
             break
         }
+    }
+    
+    func findLocation(_ beacons: [(signal : Int, item: Beacons)]) {
+        var array = beacons.sorted(by: { $0.signal < $1.signal })
+        
+        var sumOfAll = (x: 0.0, y: 0.0)
+        var countOfAll = 0.0
+        for current in array {
+            if current.signal != array[0].signal {
+                break
+            }
+            if  current.1.roomsrelationship!.floorsrelationship != currentFloor {
+                continue
+            }
+            
+            sumOfAll.x += current.item.parseCoordinates()!.x
+            sumOfAll.y += current.item.parseCoordinates()!.y
+            countOfAll += 1
+        }
+        
+        if countOfAll == 0 {
+            currentPosition = nil
+            return
+        }
+        
+        let location = CGPoint(x: sumOfAll.x / countOfAll, y: sumOfAll.y / countOfAll)
+        currentPosition = location
     }
     
     private func drawRooms(rooms: [Rooms], minX: Double, minY: Double, maxX: Double, maxY: Double, ratioX: Double, ratioY: Double) {
@@ -133,14 +166,26 @@ class MapView: UIView {
         for current in secondVertexesArray {
             let path = UIBezierPath()
             
-            path.addArc(withCenter: current, radius: CGFloat(4), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-            path.close()
-            
-            path.lineWidth = CGFloat(2.0)
-            UIColor.blue.setFill()
-            UIColor.black.setStroke()
-            path.fill()
-            path.stroke()
+            if (drawCurrentPosition == true && current == secondVertexesArray.last!) {
+                path.addArc(withCenter: current, radius: CGFloat(6), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+                path.close()
+                
+                path.lineWidth = CGFloat(1.0)
+                UIColor.green.setFill()
+                UIColor.black.setStroke()
+                path.fill()
+                path.stroke()
+            }
+            else {
+                path.addArc(withCenter: current, radius: CGFloat(3), startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+                path.close()
+                
+                path.lineWidth = CGFloat(2.0)
+                UIColor.blue.setFill()
+                UIColor.black.setStroke()
+                path.fill()
+                path.stroke()
+            }
         }
          
         return secondVertexesArray
@@ -177,11 +222,6 @@ class MapView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        
-        print(circlesIntersection(first: (x: 3, y: 4, r: 5), second: (x: 11, y: 4, r: 2)) ?? "gg")
-        print(circlesIntersection(first: (x: 3, y: 4, r: 5), second: (x: 11, y: 4, r: 3)) ?? "gg")
-        print(circlesIntersection(first: (x: 0, y: 0, r: 5), second: (x: 6, y: 0, r: 5)) ?? "gg")
-        print("----------------------")
         
         var minX = Double.infinity
         var maxX = -Double.infinity
@@ -236,6 +276,14 @@ class MapView: UIView {
                     }
                 }
             }
+        }
+        
+        if let position = currentPosition {
+            vertexes.append(position)
+            drawCurrentPosition = true
+        }
+        else {
+            drawCurrentPosition = false
         }
         vertexes = drawPoints(vertexes: vertexes, minX: minX, minY: minY, maxX: maxX, maxY: maxY, ratioX: ratioX, ratioY: ratioY)
         
@@ -421,5 +469,46 @@ extension Rooms {
         arrayToReturn.append((x: coordinateX, y: coordinateY))
 
         return arrayToReturn
+    }
+}
+
+extension Beacons {
+    static func < (lhs: Beacons, rhs: Beacons) -> Bool {
+        return lhs.id < rhs.id
+    }
+    
+    func parseMajorMinor() -> (major: Int?, minor: Int?) {
+        if majorminor == nil {
+            return (major: nil, minor: nil)
+        }
+        
+        var current = ""
+        var firstNumber: Int? = nil
+        var secondNumber: Int? = nil
+        
+        for currentSymbol in majorminor! {
+            if currentSymbol == Character(" ") {
+                if current == "" {
+                    firstNumber = nil
+                }
+                else {
+                    firstNumber = Int(current)
+                }
+                
+                current = ""
+            }
+            else {
+                current.append(currentSymbol)
+            }
+        }
+        
+        if current == "" {
+            secondNumber = nil
+        }
+        else {
+            secondNumber = Int(current)
+        }
+        
+        return (major: firstNumber, minor: secondNumber)
     }
 }
