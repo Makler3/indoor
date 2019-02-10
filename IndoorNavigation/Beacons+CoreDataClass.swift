@@ -22,12 +22,19 @@ public class Beacons: NSManagedObject {
         self.init()
         self.id = id
         self.name = name
-        self.coordinates = coordinates ?? "'0.0'"
+        self.coordinates = coordinates ?? ""
         self.majorminor = majorminor! 
-        self.uuid = uuid ?? "kk"
+        self.uuid = uuid ?? ""
         self.comment = comment
         self.height = height
     }
+    
+    //--------Ismagil's comment----------
+    /*
+     coordinates's format: "0 0"
+     coordinates need to have 2 coordinates
+     */
+    
     class func allitems() -> [Beacons] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Beacons")
         
@@ -46,7 +53,6 @@ public class Beacons: NSManagedObject {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count
         } catch {
-            print("I'm here")
             return 1
         }
     }

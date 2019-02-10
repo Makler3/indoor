@@ -19,12 +19,6 @@ public class Vertex: NSManagedObject {
         self.init(entity: Vertex.entity(), insertInto: CoreDataHelper.instance.context)
     }
     convenience init(id: String, coordinates: String?, comment: String?) {
-//        @NSManaged public var id: Int64
-//        @NSManaged public var coordinates: String?
-//        @NSManaged public var comment: String?
-//        @NSManaged public var roomsrelationship: Rooms?
-//        @NSManaged public var edgetorelationship: NSSet?
-//        @NSManaged public var edgefromrelationship: NSSet?
         self.init()
         self.id = id
         self.coordinates = coordinates!
@@ -33,6 +27,13 @@ public class Vertex: NSManagedObject {
         self.edgetorelationship = nil
         self.roomsrelationship = nil
     }
+    
+    //--------Ismagil's comment----------
+    /*
+     coordinates's format: "0 0"
+     coordinates need to have 2 coordinates
+     */
+    
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Vertex")
         

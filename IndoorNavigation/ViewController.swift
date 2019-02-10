@@ -11,34 +11,22 @@ import CoreLocation
 import CoreBluetooth
 import Firebase
 
-//private var allRooms: [[Rooms]] = [[Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)], [Rooms(comment: nil, polygon: "2 3 5 3 5 6 2 6", name: nil, type: 1), Rooms(comment: nil, polygon: "5 3 8 3 8 9 5 9", name: nil, type: 1)]]
-
-
-
-//var allFloors: [Floors] = [Floors(roomsrelationship: NSSet(array: allRooms[0]), name: nil, comment: nil), Floors(roomsrelationship: NSSet(array: allRooms[1]), name: nil, comment: nil)]
-
-private var allRooms = [Rooms]()
+var allRooms = [Rooms]()
 var allFloors = [Floors]()
 var allVertexes = [Vertex]()
 var allEdges = [Edge]()
+var getDataBeacons = [Beacons]()
 
 private var graph: Graph = Graph(edgesList: allEdges, vertexesList: allVertexes)
 
-//private var beaconsFromMinor = [Int: (CLBeacon, Beacons)]()
-
-class ViewController: UIViewController, CLLocationManagerDelegate {
-    
+class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideDelegate {
     @IBOutlet weak var leadingS: NSLayoutConstraint!
     @IBOutlet weak var trailingS: NSLayoutConstraint!
     @IBOutlet var leadingC: NSLayoutConstraint!
-    @IBOutlet var trailingC: NSLayoutConstraint!
-    
-//    @IBOutlet var ubeView: UIView!
-    
+    @IBOutlet var trailingC: NSLayoutConstraint!    
     
     
     var hamburgerMenuIsVisible = false
-    
     @IBAction func hamburgerBtnTapped(_ sender: Any) {
         //if the hamburger menu is NOT visible, then move the ubeView back to where it used to be
         if !hamburgerMenuIsVisible {
@@ -78,9 +66,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let pan = UIPanGestureRecognizer(target: mapView, action: #selector(MapView.adjustMapOffset(byHandlingGestureRecognizer:)))
             mapView.isUserInteractionEnabled = true
             mapView.addGestureRecognizer(pan)
-            
-            print("__________KEK___________")
-            //mapView.needsPathBuild = true
         }
     }
     @IBAction func floorStepper(_ sender: UIStepper) {
@@ -93,7 +78,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
 
-        self.mapView.mapScale *= 1
+        self.mapView.updateMapView += 1
     }
     
     let locationManager = CLLocationManager()
@@ -102,28 +87,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         let hse = WriteBase()
-        //        hse.writeCampus()
-        //        hse.writeBuildings()
-        //        hse.writeFloors()
-        //        hse.writeRooms()
-        //        hse.writeVertex()
-        //        hse.writeEdge()
         
-        print("||||||")
         FirebaseApp.configure()
         hse.readRoom()
         DispatchQueue.global(qos: .background).async { //асинхронное выполнение
             sleep(2)
-            print("Tell me a story...")
             hse.saving()
-            print(11, Rooms.maximum())
-            print(12, Vertex.maximum())
-            print(13, Vertex.allitems().first!.comment ?? ";;")
-            print(14, Vertex.allitems().first!.roomsrelationship?.name ?? "pp")
             allVertexes = Vertex.allitems()
             allEdges = Edge.allitems()
             allRooms = Rooms.allitems()
             allFloors = Floors.allitems()
+            getDataBeacons = Beacons.allitems()
         }
         
         
@@ -137,59 +111,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         view.addGestureRecognizer(rightSwipe)
         view.addGestureRecognizer(leftSwipe)
         
-        /*allVertexes.append(Vertex(coordinates: "2 2.5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[0][0]
-        
-        allVertexes.append(Vertex(coordinates: "4 2.5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[0][1]
-        
-        allVertexes.append(Vertex(coordinates: "6 1.5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[0][1]
-        
-        allVertexes.append(Vertex(coordinates: "8 1.5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[0][2]
-        
-        allVertexes.append(Vertex(coordinates: "6 5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[0][1]
-        
-        allVertexes.append(Vertex(coordinates: "8 5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[0][2]
-        
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[0], vertextorelationship: allVertexes[1], doorscoordinates: "3 2 3 3", comment: nil))
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[1], vertextorelationship: allVertexes[0], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[2], vertextorelationship: allVertexes[3], doorscoordinates: "7 1 7 2", comment: nil))
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[3], vertextorelationship: allVertexes[2], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[4], vertextorelationship: allVertexes[5], doorscoordinates: "7 4 7 6", comment: nil))
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[5], vertextorelationship: allVertexes[4], doorscoordinates: nil, comment: nil))
-        
-        allEdges.append(Edge(distance: 3.5, vertexfromrelationship: allVertexes[3], vertextorelationship: allVertexes[5], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 3.5, vertexfromrelationship: allVertexes[5], vertextorelationship: allVertexes[3], doorscoordinates: nil, comment: nil))
-        
-        allEdges.append(Edge(distance: 3.5, vertexfromrelationship: allVertexes[2], vertextorelationship: allVertexes[4], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 3.5, vertexfromrelationship: allVertexes[4], vertextorelationship: allVertexes[2], doorscoordinates: nil, comment: nil))
-        
-        allEdges.append(Edge(distance: 1.5, vertexfromrelationship: allVertexes[1], vertextorelationship: allVertexes[2], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 1.5, vertexfromrelationship: allVertexes[2], vertextorelationship: allVertexes[1], doorscoordinates: nil, comment: nil))
-        
-        allEdges.append(Edge(distance: 100, vertexfromrelationship: allVertexes[1], vertextorelationship: allVertexes[4], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 100, vertexfromrelationship: allVertexes[4], vertextorelationship: allVertexes[1], doorscoordinates: nil, comment: nil))
-        
-        allVertexes.append(Vertex(coordinates: "4.5 4.5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[1][0]
-        
-        allVertexes.append(Vertex(coordinates: "5.5 4.5", comment: nil))
-        allVertexes.last!.roomsrelationship = allRooms[1][1]
-        
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[6], vertextorelationship: allVertexes[7], doorscoordinates: "5 4 5 5", comment: nil))
-        allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[7], vertextorelationship: allVertexes[6], doorscoordinates: "5 4 5 5", comment: nil))
-        
-        allEdges.append(Edge(distance: 0.5, vertexfromrelationship: allVertexes[0], vertextorelationship: allVertexes[6], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 0.5, vertexfromrelationship: allVertexes[6], vertextorelationship: allVertexes[0], doorscoordinates: nil, comment: nil))*/
-        
-        
-        //mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: allRooms[0][2], finish: allRooms[1][1]).1
-        //mapView.needsPathBuild = true
-        
         locationManager.delegate = self
         //locationManager.requestAlwaysAuthorization()
         
@@ -202,9 +123,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-                //print("CLLocationManager.isMonitoringAvailable == true")
                 if CLLocationManager.isRangingAvailable() {
-                    //print("CLLocationManager.isRangingAvailable == true")
                     startScanning()
                 }
             }
@@ -223,46 +142,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        //print(beacons)
-        
-        //var coordinates = ["2 3", "5 6"]
-        var iteration = 0
         if beacons.count > 0 {
-            //updateDistance(beacons[0].proximity)
-            
             // major 123 minor 1
-            //var allBeacons = [(Int, Beacons)]()
-            for current in beacons {
+            
+            var allBeacons = [(Int, Beacons)]()
+            for current in getDataBeacons {
+                allBeacons.append((0, current))
+            }
+            
+            for index in beacons.indices {
                 //let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
                 var distance: Int
-                if current.proximity == .immediate {
+                if beacons[index].proximity == .immediate {
                     distance = 0
                 }
-                else if current.proximity == .near {
+                else if beacons[index].proximity == .near {
                     distance = 1
                 }
-                else if current.proximity == .far {
+                else if beacons[index].proximity == .far {
                     distance = 2
                 }
                 else {
                     distance = 3
                 }
                 
-                //allBeacons.append((distance, Beacons(name: nil, coordinates: coordinates[iteration], majorminor: majorminor, uuid: "10F86430-1346-11E4-9191-0800200C9A66", comment: nil)))
-                //allBeacons.last!.1.roomsrelationship = allRooms[1][0]
-                iteration += 1
-                
-                //beaconsFromMinor[allBeacons.last!.parseMajorMinor().minor!] = (beacons[0], allBeacons[0])
+                allBeacons[index].0 = distance
             }
             
-            //mapView.findLocation(allBeacons)
-            
-            //print(beacon.accuracy)
-            //print(distanceFromRSSI(rssi: beacon.rssi) ?? "nil")
+            mapView.drawCurrentPosition = true
+            mapView.findLocation(allBeacons)
         }
         else {
             mapView.findLocation(Array())
-            //updateDistance(.unknown)
+            mapView.drawCurrentPosition = false
         }
     }
     
@@ -321,5 +233,40 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
+    ////////added by Vadim
+    func newSearch(_ controller: FinderInsideViewController,  fromField: String, ToField: String) {
+        dismiss(animated: true, completion: nil)
+        print(fromField)
+        print(ToField)
+        //убрать текущий модальный контроллер
+        
+        var startRoom: Rooms?
+        var finishRoom: Rooms?
+        for current in allRooms {
+            if current.name == fromField {
+                startRoom = current
+            }
+            if current.name == ToField {
+                finishRoom = current
+            }
+        }
+        
+        if finishRoom != nil && startRoom != nil {
+            mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: startRoom!, finish: finishRoom!).1
+            mapView.needsPathBuild = true
+        }
+        else {
+            mapView.needsPathBuild = false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as? FinderInsideViewController
+        if let newBirthdayController = controller {
+            newBirthdayController.delegate = self
+        }
+    }
+    //////////
 }
 

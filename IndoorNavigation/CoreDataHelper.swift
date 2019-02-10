@@ -1,5 +1,6 @@
 //  CoreDataHelper.swift
 //  CDhse
+
 import Foundation
 import CoreData
 
@@ -41,7 +42,6 @@ class CoreDataHelper: NSObject {
         } catch let error1 as NSError {
             error = error1
             print("Cannot open database: \(String(describing: error))")
-            //abort()
         }
         
         context = NSManagedObjectContext(concurrencyType:

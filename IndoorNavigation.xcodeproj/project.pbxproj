@@ -29,6 +29,8 @@
 		C8C52DB1220F3A9100072C78 /* Edge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA9220F3A9100072C78 /* Edge+CoreDataProperties.swift */; };
 		C8C52DB2220F3A9100072C78 /* Floors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DAA220F3A9100072C78 /* Floors+CoreDataProperties.swift */; };
 		C8C52DB3220F3A9100072C78 /* Vertex+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DAB220F3A9100072C78 /* Vertex+CoreDataProperties.swift */; };
+		C8C52DB9221024F200072C78 /* FinderInsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DB8221024F200072C78 /* FinderInsideViewController.swift */; };
+		C8C52DBC2210250400072C78 /* FindInside.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C52DBA2210250400072C78 /* FindInside.storyboard */; };
 		C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */; };
 		C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */; };
 		C8CEBA9F2209D71E00F77AF7 /* Edge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */; };
@@ -72,6 +74,8 @@
 		C8C52DA9220F3A9100072C78 /* Edge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8C52DAA220F3A9100072C78 /* Floors+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8C52DAB220F3A9100072C78 /* Vertex+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vertex+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DB8221024F200072C78 /* FinderInsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinderInsideViewController.swift; sourceTree = "<group>"; };
+		C8C52DBB2210250400072C78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindInside.storyboard; sourceTree = "<group>"; };
 		C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -151,10 +155,10 @@
 				C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */,
 				C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */,
 				C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */,
+				C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */,
+				C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */,
 				C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */,
 				C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */,
-				C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */,
-				C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */,
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
 				C8F37C622204E943006A6BD9 /* Polygon.swift */,
 				C854C451220C7E8700E28A81 /*  Geometry.swift */,
@@ -164,8 +168,10 @@
 				C8253D2922048BCF008FA557 /* GraphVertex.swift */,
 				C8253D1522047481008FA557 /* ViewController.swift */,
 				C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */,
+				C8C52DB8221024F200072C78 /* FinderInsideViewController.swift */,
 				C8253D1322047481008FA557 /* AppDelegate.swift */,
 				C8253D1A22047482008FA557 /* Assets.xcassets */,
+				C8C52DBA2210250400072C78 /* FindInside.storyboard */,
 				C8253D1C22047482008FA557 /* LaunchScreen.storyboard */,
 				C86E48CE220EF1290043C86E /* Main.storyboard */,
 				C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */,
@@ -239,6 +245,7 @@
 				C8253D1E22047482008FA557 /* LaunchScreen.storyboard in Resources */,
 				9CDF449722098E80000BECF9 /* images.xcassets in Resources */,
 				C8819CD6220F374F007FDBE9 /* GoogleService-Info.plist in Resources */,
+				C8C52DBC2210250400072C78 /* FindInside.storyboard in Resources */,
 				C8253D1B22047482008FA557 /* Assets.xcassets in Resources */,
 				C86E48D0220EF1290043C86E /* Main.storyboard in Resources */,
 			);
@@ -312,6 +319,7 @@
 				C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */,
 				C8C52DAD220F3A9100072C78 /* Rooms+CoreDataProperties.swift in Sources */,
 				C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */,
+				C8C52DB9221024F200072C78 /* FinderInsideViewController.swift in Sources */,
 				C8CEBA9F2209D71E00F77AF7 /* Edge+CoreDataClass.swift in Sources */,
 				C8C52DB3220F3A9100072C78 /* Vertex+CoreDataProperties.swift in Sources */,
 				C8C52DAF220F3A9100072C78 /* Campus+CoreDataProperties.swift in Sources */,
@@ -359,6 +367,14 @@
 				C8819CD5220F374E007FDBE9 /* Base */,
 			);
 			name = "GoogleService-Info.plist";
+			sourceTree = "<group>";
+		};
+		C8C52DBA2210250400072C78 /* FindInside.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8C52DBB2210250400072C78 /* Base */,
+			);
+			name = FindInside.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -19,13 +19,6 @@ public class Session: NSManagedObject {
         self.init(entity: Session.entity(), insertInto: CoreDataHelper.instance.context)
     }
     convenience init(id: String, cordinates: String?, dt_start: NSDate?, dt_end: NSDate?, dt_modification: NSDate?, comment: String?) {
-//        @NSManaged public var id: Int64
-//        @NSManaged public var cordinates: String?
-//        @NSManaged public var dt_start: NSDate?
-//        @NSManaged public var dt_end: NSDate?
-//        @NSManaged public var dt_modification: NSDate?
-//        @NSManaged public var comment: String?
-//        @NSManaged public var roomsrelationship: Rooms?
         self.init()
         self.id = id
         self.cordinates = cordinates
@@ -52,7 +45,6 @@ public class Session: NSManagedObject {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count
         } catch {
-            print("I'm here")
             return 1
         }
     }

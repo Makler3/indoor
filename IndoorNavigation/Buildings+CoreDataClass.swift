@@ -41,7 +41,6 @@ public class Buildings: NSManagedObject {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count
         } catch {
-            print("I'm here")
             return 1
         }
     }

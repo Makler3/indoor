@@ -19,7 +19,6 @@ public class Floors: NSManagedObject {
         self.init(entity: Floors.entity(), insertInto: CoreDataHelper.instance.context)
     }
     convenience init(id: String, name: String?, comment: String? ) {
-        
         self.init()
         self.name = name
         self.id = id
@@ -41,7 +40,6 @@ public class Floors: NSManagedObject {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count
         } catch {
-            print("I'm here")
             return 1
         }
     }

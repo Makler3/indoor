@@ -19,7 +19,7 @@ extension Buildings {
 
     @NSManaged public var adress: String?
     @NSManaged public var comment: String?
-    @NSManaged public var id: String?
+    @NSManaged public var id: String
     @NSManaged public var name: String?
     @NSManaged public var campusrelationship: Campus?
     @NSManaged public var floorsrelationship: NSOrderedSet?

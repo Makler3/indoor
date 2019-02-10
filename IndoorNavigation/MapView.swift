@@ -11,18 +11,19 @@ import CoreLocation
 
 class MapView: UIView {
     
-    var mapScale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
+    var updateMapView = 0 { didSet { setNeedsDisplay() } }
+    private var mapScale: CGFloat = 1.0 { didSet { setNeedsDisplay() } }
     private var mapOffsetX: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
     private var mapOffsetY: CGFloat = 0.0 { didSet { setNeedsDisplay() } }
     
-    var needsPathBuild: Bool = false { didSet { setNeedsDisplay() } }
+    var needsPathBuild = false { didSet { setNeedsDisplay() } }
     var pathVertexes: [Vertex]? = nil { didSet { setNeedsDisplay() } }
     
     var currentFloor: Floors? = Floors(id: "123", name: nil, comment: nil) { didSet { setNeedsDisplay() } }
     
-    private var currentPosition: CGPoint? = nil { didSet { setNeedsDisplay() } }
+    var currentPosition: CGPoint? = nil { didSet { setNeedsDisplay() } }
     
-    private var drawCurrentPosition = false
+    var drawCurrentPosition = false { didSet { setNeedsDisplay() } }
     
     
     @objc func adjustMapScale(byHandlingGestureRecognizer recognizer: UIPinchGestureRecognizer) {
@@ -93,7 +94,7 @@ class MapView: UIView {
             figures.append(Polygon(points: room.parsePolygon()!))
         }
         
-        for index in 0 ..< figures.count {
+        for index in figures.indices {
             figures[index].offset(dx: -minX, dy: -minY)
             figures[index].adjustCoordinates(multiplierX: ratioX, multiplierY: ratioY)
             figures[index].offset(dx: Double(magic) * 0.01, dy: Double(magic) * 0.01)
@@ -196,7 +197,7 @@ class MapView: UIView {
         if vertexes == nil {
             return
         }
-        if (vertexes?.count == 0) {
+        if (vertexes!.count == 0) {
             return
         }
         
@@ -357,7 +358,7 @@ extension Vertex {
         var coordinateX = 0.0
         var coordinateY = 0.0
         
-        for currentSymbol in coordinates! {
+        for currentSymbol in coordinates {
             if currentSymbol == Character(" ") {
                 coordinateX = Double(current)!
                 current = ""
@@ -379,7 +380,7 @@ extension Beacons {
         var coordinateX = 0.0
         var coordinateY = 0.0
         
-        for currentSymbol in coordinates! {
+        for currentSymbol in coordinates {
             if currentSymbol == Character(" ") {
                 coordinateX = Double(current)!
                 current = ""
@@ -447,7 +448,7 @@ extension Rooms {
         var coordinateX = 0.0
         var coordinateY = 0.0
         var numberOfCoordinatesFound = 0
-        for currentSymbol in polygon! {
+        for currentSymbol in polygon {
             if currentSymbol == Character(" ") {
                 numberOfCoordinatesFound += 1
                 
@@ -478,7 +479,7 @@ extension Rooms {
 
 extension Beacons {
     static func < (lhs: Beacons, rhs: Beacons) -> Bool {
-        return lhs.id! < rhs.id!
+        return lhs.id < rhs.id
     }
     
     func parseMajorMinor() -> (major: Int?, minor: Int?) {
@@ -486,7 +487,7 @@ extension Beacons {
         var firstNumber: Int? = nil
         var secondNumber: Int? = nil
         
-        for currentSymbol in majorminor! {
+        for currentSymbol in majorminor {
             if currentSymbol == Character(" ") {
                 if current == "" {
                     firstNumber = nil

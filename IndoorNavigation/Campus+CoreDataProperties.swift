@@ -18,7 +18,7 @@ extension Campus {
     }
 
     @NSManaged public var comment: String?
-    @NSManaged public var id: String?
+    @NSManaged public var id: String
     @NSManaged public var name: String?
     @NSManaged public var buildingsrelationship: NSOrderedSet?
 

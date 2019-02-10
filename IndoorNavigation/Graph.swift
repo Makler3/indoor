@@ -17,7 +17,7 @@ class Graph {
                 if self.adjacencyList[from] == nil {
                     self.adjacencyList[from] = Array()
                 }
-                self.adjacencyList[from]!.append((to, Double(currentEdge.distance!)!))
+                self.adjacencyList[from]!.append((to, Double(currentEdge.distance) ?? 0.0))
             }
         }
     }

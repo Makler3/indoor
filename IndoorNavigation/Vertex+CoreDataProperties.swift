@@ -18,8 +18,8 @@ extension Vertex {
     }
 
     @NSManaged public var comment: String?
-    @NSManaged public var coordinates: String?
-    @NSManaged public var id: String?
+    @NSManaged public var coordinates: String
+    @NSManaged public var id: String
     @NSManaged public var edgefromrelationship: NSOrderedSet?
     @NSManaged public var edgetorelationship: NSOrderedSet?
     @NSManaged public var roomsrelationship: Rooms?
