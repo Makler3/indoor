@@ -19,7 +19,7 @@ extension Edge {
 
     @NSManaged public var comment: String?
     @NSManaged public var distance: String
-    @NSManaged public var doorscoordinates: String?
+    @NSManaged public var doorscoordinates: String
     @NSManaged public var id: String
     @NSManaged public var vertexfrom: String
     @NSManaged public var vertexto: String

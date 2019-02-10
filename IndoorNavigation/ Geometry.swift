@@ -14,10 +14,13 @@ func crossProduct(firstVector: (x: Double, y: Double), secondVector: (x: Double,
     return firstVector.x * secondVector.y - firstVector.y * secondVector.x
 }
 
+func dotProduct(firstVector: (x: Double, y: Double), secondVector: (x: Double, y: Double)) -> Double {
+    return firstVector.x * secondVector.x + firstVector.y * secondVector.y
+}
+
 func sqr(_ value: Double) -> Double {
     return value * value
 }
-
 
 func distance(_ first: (x: Double, y: Double), _ second: (x: Double, y: Double)) -> Double {
     return sqrt(sqr(first.x - second.x) + sqr(first.y - second.y))
@@ -41,7 +44,36 @@ func circlesIntersection(first: (x: Double, y: Double, r: Double), second: (x: D
     return [firstPoint, secondPoint]
 }
 
-func getPointFromThreeCircles(circles: [(x: Double, y: Double, r: Double)]) -> (x: Double, y: Double)? {
+func isInside(point: (x: Double, y: Double), first: (x: Double, y: Double), second: (x: Double, y: Double)) -> Bool {
+    let firstVector = (x: first.x - point.x, y: first.y - point.y)
+    let secondVector = (x: second.x - point.x, y: second.y - point.y)
+    
+    if abs(crossProduct(firstVector: firstVector, secondVector: secondVector)) < eps {
+        if first <= second {
+            return first <= point && point <= second
+        }
+        else {
+            return second <= point && point <= first
+        }
+    }
+    
+    return false
+}
+
+extension Double {
+    func sign() -> Int {
+        if self > 0 {
+            return 1
+        }
+        if self < 0 {
+            return -1
+        }
+        
+        return 0
+    }
+}
+
+/*func getPointFromThreeCircles(circles: [(x: Double, y: Double, r: Double)]) -> (x: Double, y: Double)? {
     if circles.count != 3 {
         return nil
     }
@@ -130,4 +162,4 @@ func getPointFromBeaconDistances(beacons: [(x: Double, y: Double, r: Double)]?) 
     }
     
     return nil
-}
+}*/

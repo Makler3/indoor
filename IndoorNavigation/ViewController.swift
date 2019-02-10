@@ -241,23 +241,61 @@ class ViewController: UIViewController, CLLocationManagerDelegate, FinderInsideD
         print(ToField)
         //убрать текущий модальный контроллер
         
-        var startRoom: Rooms?
-        var finishRoom: Rooms?
-        for current in allRooms {
-            if current.name == fromField {
-                startRoom = current
+        if fromField == "" {
+            var finishRoom: Rooms?
+            for current in allRooms {
+                if current.name == ToField {
+                    finishRoom = current
+                }
             }
-            if current.name == ToField {
-                finishRoom = current
+            
+            var nearestVertex: Vertex?
+            if mapView.currentPosition == nil {
+                print("No Current Position")
+                return
             }
-        }
-        
-        if finishRoom != nil && startRoom != nil {
-            mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: startRoom!, finish: finishRoom!).1
-            mapView.needsPathBuild = true
+            let currentPosition = (x: Double(mapView.currentPosition!.x), y: Double(mapView.currentPosition!.y))
+            
+            for current in allVertexes {
+                if nearestVertex == nil {
+                    nearestVertex = current
+                }
+                else {
+                    let nearestVertexCoordinates = (x: nearestVertex!.parseCoordinates()!.x, y: nearestVertex!.parseCoordinates()!.y)
+                    let currentCoordinates = (x: current.parseCoordinates()!.x, y: current.parseCoordinates()!.y)
+                    if distance(nearestVertexCoordinates, currentPosition) > distance(currentCoordinates, currentPosition) {
+                        nearestVertex = current
+                    }
+                }
+            }
+            
+            if finishRoom != nil, nearestVertex != nil {
+                mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: nearestVertex!, finish: finishRoom!).1
+                mapView.needsPathBuild = true
+            }
+            else {
+                mapView.needsPathBuild = false
+            }
         }
         else {
-            mapView.needsPathBuild = false
+            var startRoom: Rooms?
+            var finishRoom: Rooms?
+            for current in allRooms {
+                if current.name == fromField {
+                    startRoom = current
+                }
+                if current.name == ToField {
+                    finishRoom = current
+                }
+            }
+            
+            if finishRoom != nil && startRoom != nil {
+                mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: startRoom!, finish: finishRoom!).1
+                mapView.needsPathBuild = true
+            }
+            else {
+                mapView.needsPathBuild = false
+            }
         }
     }
     

@@ -30,7 +30,6 @@ class FinderInsideViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func FindWay(_ sender: Any) {
-        print(57)
         let from = FromField.text
         let to = ToField.text
         delegate?.newSearch(self, fromField: from!, ToField: to!)

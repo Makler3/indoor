@@ -19,7 +19,7 @@ class MapView: UIView {
     var needsPathBuild = false { didSet { setNeedsDisplay() } }
     var pathVertexes: [Vertex]? = nil { didSet { setNeedsDisplay() } }
     
-    var currentFloor: Floors? = Floors(id: "123", name: nil, comment: nil) { didSet { setNeedsDisplay() } }
+    var currentFloor: Floors? = nil { didSet { setNeedsDisplay() } }
     
     var currentPosition: CGPoint? = nil { didSet { setNeedsDisplay() } }
     
@@ -399,7 +399,7 @@ extension Beacons {
 extension Edge {
     func parseDoorsCoordinates() -> [(x: Double, y: Double)]? {
         
-        if doorscoordinates == nil {
+        if doorscoordinates == "nil" {
             return nil
         }
         
@@ -410,7 +410,7 @@ extension Edge {
         var coordinateX = 0.0
         var coordinateY = 0.0
         var numberOfCoordinatesFound = 0
-        for currentSymbol in doorscoordinates! {
+        for currentSymbol in doorscoordinates {
             if currentSymbol == Character(" ") {
                 numberOfCoordinatesFound += 1
                 

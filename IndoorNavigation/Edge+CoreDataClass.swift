@@ -18,7 +18,7 @@ public class Edge: NSManagedObject {
     convenience init() {
         self.init(entity: Edge.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(id: String, distance: String, doorscoordinates: String?, comment: String?, vertexto: String, vertexfrom: String) {
+    convenience init(id: String, distance: String, doorscoordinates: String, comment: String?, vertexto: String, vertexfrom: String) {
         self.init()
         self.id = id
         self.distance = distance

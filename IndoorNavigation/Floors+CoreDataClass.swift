@@ -35,7 +35,6 @@ public class Floors: NSManagedObject {
     }
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Floors")
-        print(fetchRequest)
         do {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count

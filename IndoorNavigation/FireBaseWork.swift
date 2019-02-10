@@ -160,7 +160,7 @@ class WriteBase {
         var campusArray = [Campus]()
         
         var distanceEdge = "0.0"
-        var doorscoordinatesEdge = " "
+        var doorscoordinatesEdge: String = "nil"
         var vertexfromEdge = " "
         var vertextoEdge = " "
         var idEdge = " "
@@ -499,21 +499,21 @@ class WriteBase {
                     }
                 }
             }
-        })
-        
-        let arrayEdgeForVertex = Edge.allitems()
-        let arrayVertexForEdge = Vertex.allitems()
-        
-        for edgeForVertex in arrayEdgeForVertex {
-            for VertexForEdge in arrayVertexForEdge {
-                if VertexForEdge.id == edgeForVertex.vertexfrom {
-                    edgeForVertex.vertexfromrelationship = VertexForEdge
-                }
-                if VertexForEdge.id == edgeForVertex.vertexto {
-                    edgeForVertex.vertextorelationship = VertexForEdge
+            
+            let arrayEdgeForVertex = Edge.allitems()
+            let arrayVertexForEdge = Vertex.allitems()
+            
+            for edgeForVertex in arrayEdgeForVertex {
+                for VertexForEdge in arrayVertexForEdge {
+                    if VertexForEdge.id == edgeForVertex.vertexfrom {
+                        edgeForVertex.vertexfromrelationship = VertexForEdge
+                    }
+                    if VertexForEdge.id == edgeForVertex.vertexto {
+                        edgeForVertex.vertextorelationship = VertexForEdge
+                    }
                 }
             }
-        }
+        })
         
         
     }
