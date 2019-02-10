@@ -18,14 +18,23 @@ public class Beacons: NSManagedObject {
     convenience init() {
         self.init(entity: Beacons.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(name: String?, coordinates: String, majorminor: String, uuid: String, comment: String?) {
+    convenience init(id: String, name: String?, coordinates: String?, majorminor: String?, uuid: String?, comment: String?, height : String?) {
         self.init()
-        self.id = Int64(Beacons.maximum())
+        self.id = id
         self.name = name
-        self.coordinates = coordinates
-        self.majorminor = majorminor
-        self.uuid = uuid
+        self.coordinates = coordinates ?? "'0.0'"
+        self.majorminor = majorminor! 
+        self.uuid = uuid ?? "kk"
         self.comment = comment
+        self.height = height
+    }
+    class func allitems() -> [Beacons] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Beacons")
+        
+        let results = try? CoreDataHelper.instance.context.fetch(
+            fetchRequest)
+        
+        return results as! [Beacons]
     }
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Beacons")

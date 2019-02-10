@@ -18,14 +18,28 @@ public class Edge: NSManagedObject {
     convenience init() {
         self.init(entity: Edge.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(distance: Double, vertexfromrelationship: Vertex, vertextorelationship: Vertex, doorscoordinates: String?, comment: String?) {
+    convenience init(id: String, distance: String, doorscoordinates: String?, comment: String?, vertexto: String?, vertexfrom: String?) {
+//        @NSManaged public var id: Int64
+//        @NSManaged public var distance: Double
+//        @NSManaged public var doorscoordinates: String?
+//        @NSManaged public var comment: String?
+//        @NSManaged public var vertexfromrelationship: Vertex?
+//        @NSManaged public var vertextorelationship: Vertex?
         self.init()
-        self.id = Int64(Edge.maximum())
+        self.id = id
         self.distance = distance
-        self.vertextorelationship = vertextorelationship
-        self.vertexfromrelationship = vertexfromrelationship
         self.doorscoordinates = doorscoordinates
         self.comment = comment
+        self.vertexto = vertexto!
+        self.vertexfrom = vertexfrom!
+    }
+    class func allitems() -> [Edge] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Edge")
+        
+        let results = try? CoreDataHelper.instance.context.fetch(
+            fetchRequest)
+        
+        return results as! [Edge]
     }
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Edge")

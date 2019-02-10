@@ -10,7 +10,6 @@
 		9CDF449722098E80000BECF9 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CDF449622098E80000BECF9 /* images.xcassets */; };
 		C8253D1422047481008FA557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D1322047481008FA557 /* AppDelegate.swift */; };
 		C8253D1622047481008FA557 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D1522047481008FA557 /* ViewController.swift */; };
-		C8253D1922047481008FA557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8253D1722047481008FA557 /* Main.storyboard */; };
 		C8253D1B22047482008FA557 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8253D1A22047482008FA557 /* Assets.xcassets */; };
 		C8253D1E22047482008FA557 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8253D1C22047482008FA557 /* LaunchScreen.storyboard */; };
 		C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2522047AD0008FA557 /* GraphEdge.swift */; };
@@ -18,34 +17,41 @@
 		C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253D2922048BCF008FA557 /* GraphVertex.swift */; };
 		C854C452220C7E8700E28A81 /*  Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C451220C7E8700E28A81 /*  Geometry.swift */; };
 		C854C454220D7D1600E28A81 /* BeaconSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C854C453220D7D1600E28A81 /* BeaconSupport.swift */; };
+		C86E48CD220EF00D0043C86E /* WorldMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */; };
+		C86E48D0220EF1290043C86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E48CE220EF1290043C86E /* Main.storyboard */; };
+		C8819CD0220F32A9007FDBE9 /* FireBaseWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8819CCF220F32A8007FDBE9 /* FireBaseWork.swift */; };
+		C8819CD6220F374F007FDBE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */; };
+		C8C52DAC220F3A9100072C78 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA4220F3A9100072C78 /* Session+CoreDataProperties.swift */; };
+		C8C52DAD220F3A9100072C78 /* Rooms+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA5220F3A9100072C78 /* Rooms+CoreDataProperties.swift */; };
+		C8C52DAE220F3A9100072C78 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA6220F3A9100072C78 /* Buildings+CoreDataProperties.swift */; };
+		C8C52DAF220F3A9100072C78 /* Campus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA7220F3A9100072C78 /* Campus+CoreDataProperties.swift */; };
+		C8C52DB0220F3A9100072C78 /* Beacons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA8220F3A9100072C78 /* Beacons+CoreDataProperties.swift */; };
+		C8C52DB1220F3A9100072C78 /* Edge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DA9220F3A9100072C78 /* Edge+CoreDataProperties.swift */; };
+		C8C52DB2220F3A9100072C78 /* Floors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DAA220F3A9100072C78 /* Floors+CoreDataProperties.swift */; };
+		C8C52DB3220F3A9100072C78 /* Vertex+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C52DAB220F3A9100072C78 /* Vertex+CoreDataProperties.swift */; };
 		C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */; };
-		C8CEBA9D2209D71E00F77AF7 /* Buildings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */; };
 		C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */; };
 		C8CEBA9F2209D71E00F77AF7 /* Edge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */; };
-		C8CEBAA02209D71E00F77AF7 /* Campus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA952209D71E00F77AF7 /* Campus+CoreDataProperties.swift */; };
-		C8CEBAA12209D71E00F77AF7 /* Beacons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA962209D71E00F77AF7 /* Beacons+CoreDataProperties.swift */; };
 		C8CEBAA22209D71E00F77AF7 /* Beacons+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */; };
 		C8CEBAA32209D71E00F77AF7 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */; };
-		C8CEBAA42209D71E00F77AF7 /* Edge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA992209D71E00F77AF7 /* Edge+CoreDataProperties.swift */; };
-		C8CEBAA52209D71E00F77AF7 /* Floors+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */; };
 		C8CEBAA62209D71E00F77AF7 /* Campus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */; };
-		C8CEBAAF2209D73F00F77AF7 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAA72209D73E00F77AF7 /* Session+CoreDataProperties.swift */; };
 		C8CEBAB02209D73F00F77AF7 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAA82209D73E00F77AF7 /* Session+CoreDataClass.swift */; };
 		C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAA92209D73F00F77AF7 /* Rooms+CoreDataClass.swift */; };
-		C8CEBAB22209D73F00F77AF7 /* Rooms+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAAA2209D73F00F77AF7 /* Rooms+CoreDataProperties.swift */; };
 		C8CEBAB32209D73F00F77AF7 /* Vertex+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */; };
-		C8CEBAB52209D73F00F77AF7 /* Vertex+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAAE2209D73F00F77AF7 /* Vertex+CoreDataProperties.swift */; };
 		C8CEBAB82209D76C00F77AF7 /* TableModule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C8CEBAB62209D76C00F77AF7 /* TableModule.xcdatamodeld */; };
 		C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F37C602204DDA0006A6BD9 /* MapView.swift */; };
 		C8F37C632204E943006A6BD9 /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F37C622204E943006A6BD9 /* Polygon.swift */; };
+		F8697C37958958CF4457EF06 /* Pods_indoor_navigation_a.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F6A37B4A66CEA3B69828A2 /* Pods_indoor_navigation_a.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03492897046751A5D8439D6E /* Pods-indoor navigation a.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-indoor navigation a.release.xcconfig"; path = "Target Support Files/Pods-indoor navigation a/Pods-indoor navigation a.release.xcconfig"; sourceTree = "<group>"; };
+		39F6A37B4A66CEA3B69828A2 /* Pods_indoor_navigation_a.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_indoor_navigation_a.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDF449622098E80000BECF9 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		B59E512DD01322B0C025BF46 /* Pods-indoor navigation a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-indoor navigation a.debug.xcconfig"; path = "Target Support Files/Pods-indoor navigation a/Pods-indoor navigation a.debug.xcconfig"; sourceTree = "<group>"; };
 		C8253D1022047481008FA557 /* indoor navigation a.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "indoor navigation a.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8253D1322047481008FA557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8253D1522047481008FA557 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C8253D1822047481008FA557 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8253D1A22047482008FA557 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8253D1D22047482008FA557 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8253D1F22047482008FA557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,23 +60,27 @@
 		C8253D2922048BCF008FA557 /* GraphVertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphVertex.swift; sourceTree = "<group>"; };
 		C854C451220C7E8700E28A81 /*  Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Geometry.swift"; sourceTree = "<group>"; };
 		C854C453220D7D1600E28A81 /* BeaconSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconSupport.swift; sourceTree = "<group>"; };
+		C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldMapViewController.swift; path = "../../../Desktop/Hamburger-Menu-Blog-master/HamburgerMenuBlog/WorldMapViewController.swift"; sourceTree = "<group>"; };
+		C86E48CF220EF1290043C86E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../Desktop/Hamburger-Menu-Blog-master/HamburgerMenuBlog/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		C8819CCF220F32A8007FDBE9 /* FireBaseWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseWork.swift; sourceTree = "<group>"; };
+		C8819CD5220F374E007FDBE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C8C52DA4220F3A9100072C78 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DA5220F3A9100072C78 /* Rooms+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rooms+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DA6220F3A9100072C78 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DA7220F3A9100072C78 /* Campus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Campus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DA8220F3A9100072C78 /* Beacons+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Beacons+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DA9220F3A9100072C78 /* Edge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DAA220F3A9100072C78 /* Floors+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C8C52DAB220F3A9100072C78 /* Vertex+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vertex+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Buildings+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C8CEBA952209D71E00F77AF7 /* Campus+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Campus+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C8CEBA962209D71E00F77AF7 /* Beacons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Beacons+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Beacons+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		C8CEBA992209D71E00F77AF7 /* Edge+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Edge+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Floors+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Campus+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C8CEBAA72209D73E00F77AF7 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBAA82209D73E00F77AF7 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8CEBAA92209D73F00F77AF7 /* Rooms+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rooms+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C8CEBAAA2209D73F00F77AF7 /* Rooms+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rooms+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vertex+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C8CEBAAE2209D73F00F77AF7 /* Vertex+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vertex+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C8CEBAB72209D76C00F77AF7 /* TableModule.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TableModule.xcdatamodel; sourceTree = "<group>"; };
 		C8F37C602204DDA0006A6BD9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C8F37C622204E943006A6BD9 /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
@@ -81,17 +91,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8697C37958958CF4457EF06 /* Pods_indoor_navigation_a.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C8EA6CAAACCDA593AF49721 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39F6A37B4A66CEA3B69828A2 /* Pods_indoor_navigation_a.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60F59442B2BC512A70ECB64E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B59E512DD01322B0C025BF46 /* Pods-indoor navigation a.debug.xcconfig */,
+				03492897046751A5D8439D6E /* Pods-indoor navigation a.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C8253D0722047481008FA557 = {
 			isa = PBXGroup;
 			children = (
 				C8253D1222047481008FA557 /* IndoorNavigation */,
 				C8253D1122047481008FA557 /* Products */,
+				60F59442B2BC512A70ECB64E /* Pods */,
+				0C8EA6CAAACCDA593AF49721 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,36 +136,39 @@
 		C8253D1222047481008FA557 /* IndoorNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				C8C52DA4220F3A9100072C78 /* Session+CoreDataProperties.swift */,
+				C8C52DA5220F3A9100072C78 /* Rooms+CoreDataProperties.swift */,
+				C8C52DA6220F3A9100072C78 /* Buildings+CoreDataProperties.swift */,
+				C8C52DA7220F3A9100072C78 /* Campus+CoreDataProperties.swift */,
+				C8C52DA8220F3A9100072C78 /* Beacons+CoreDataProperties.swift */,
+				C8C52DA9220F3A9100072C78 /* Edge+CoreDataProperties.swift */,
+				C8C52DAA220F3A9100072C78 /* Floors+CoreDataProperties.swift */,
+				C8C52DAB220F3A9100072C78 /* Vertex+CoreDataProperties.swift */,
 				C8CEBAB62209D76C00F77AF7 /* TableModule.xcdatamodeld */,
+				C8819CCF220F32A8007FDBE9 /* FireBaseWork.swift */,
 				C8CEBAA92209D73F00F77AF7 /* Rooms+CoreDataClass.swift */,
-				C8CEBAAA2209D73F00F77AF7 /* Rooms+CoreDataProperties.swift */,
 				C8CEBAA82209D73E00F77AF7 /* Session+CoreDataClass.swift */,
-				C8CEBAA72209D73E00F77AF7 /* Session+CoreDataProperties.swift */,
 				C8CEBAAB2209D73F00F77AF7 /* Vertex+CoreDataClass.swift */,
-				C8CEBAAE2209D73F00F77AF7 /* Vertex+CoreDataProperties.swift */,
 				C8CEBA972209D71E00F77AF7 /* Beacons+CoreDataClass.swift */,
-				C8CEBA962209D71E00F77AF7 /* Beacons+CoreDataProperties.swift */,
 				C8CEBA912209D71E00F77AF7 /* Buildings+CoreDataClass.swift */,
-				C8CEBA922209D71E00F77AF7 /* Buildings+CoreDataProperties.swift */,
 				C8CEBA9B2209D71E00F77AF7 /* Campus+CoreDataClass.swift */,
-				C8CEBA952209D71E00F77AF7 /* Campus+CoreDataProperties.swift */,
 				C8CEBA982209D71E00F77AF7 /* CoreDataHelper.swift */,
 				C8CEBA942209D71E00F77AF7 /* Edge+CoreDataClass.swift */,
-				C8CEBA992209D71E00F77AF7 /* Edge+CoreDataProperties.swift */,
 				C8CEBA932209D71E00F77AF7 /* Floors+CoreDataClass.swift */,
-				C8CEBA9A2209D71E00F77AF7 /* Floors+CoreDataProperties.swift */,
 				C8F37C602204DDA0006A6BD9 /* MapView.swift */,
 				C8F37C622204E943006A6BD9 /* Polygon.swift */,
 				C854C451220C7E8700E28A81 /*  Geometry.swift */,
 				C854C453220D7D1600E28A81 /* BeaconSupport.swift */,
-				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
 				C8253D2722048144008FA557 /* Graph.swift */,
+				C8253D2522047AD0008FA557 /* GraphEdge.swift */,
 				C8253D2922048BCF008FA557 /* GraphVertex.swift */,
-				C8253D1322047481008FA557 /* AppDelegate.swift */,
 				C8253D1522047481008FA557 /* ViewController.swift */,
-				C8253D1722047481008FA557 /* Main.storyboard */,
+				C86E48CC220EF00D0043C86E /* WorldMapViewController.swift */,
+				C8253D1322047481008FA557 /* AppDelegate.swift */,
 				C8253D1A22047482008FA557 /* Assets.xcassets */,
 				C8253D1C22047482008FA557 /* LaunchScreen.storyboard */,
+				C86E48CE220EF1290043C86E /* Main.storyboard */,
+				C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */,
 				C8253D1F22047482008FA557 /* Info.plist */,
 				9CDF449622098E80000BECF9 /* images.xcassets */,
 			);
@@ -149,9 +182,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8253D2222047482008FA557 /* Build configuration list for PBXNativeTarget "indoor navigation a" */;
 			buildPhases = (
+				FF062F044B69A49DA3BD4D90 /* [CP] Check Pods Manifest.lock */,
 				C8253D0C22047481008FA557 /* Sources */,
 				C8253D0D22047481008FA557 /* Frameworks */,
 				C8253D0E22047481008FA557 /* Resources */,
+				7A59AF88BAAE00A98E92C1DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,20 +238,71 @@
 			files = (
 				C8253D1E22047482008FA557 /* LaunchScreen.storyboard in Resources */,
 				9CDF449722098E80000BECF9 /* images.xcassets in Resources */,
+				C8819CD6220F374F007FDBE9 /* GoogleService-Info.plist in Resources */,
 				C8253D1B22047482008FA557 /* Assets.xcassets in Resources */,
-				C8253D1922047481008FA557 /* Main.storyboard in Resources */,
+				C86E48D0220EF1290043C86E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A59AF88BAAE00A98E92C1DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-indoor navigation a/Pods-indoor navigation a-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-indoor navigation a/Pods-indoor navigation a-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF062F044B69A49DA3BD4D90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-indoor navigation a-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8253D0C22047481008FA557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8CEBAA02209D71E00F77AF7 /* Campus+CoreDataProperties.swift in Sources */,
-				C8CEBA9D2209D71E00F77AF7 /* Buildings+CoreDataProperties.swift in Sources */,
+				C8C52DB0220F3A9100072C78 /* Beacons+CoreDataProperties.swift in Sources */,
 				C8253D2822048144008FA557 /* Graph.swift in Sources */,
 				C8CEBA9C2209D71E00F77AF7 /* Buildings+CoreDataClass.swift in Sources */,
 				C8CEBAA62209D71E00F77AF7 /* Campus+CoreDataClass.swift in Sources */,
@@ -224,22 +310,25 @@
 				C854C454220D7D1600E28A81 /* BeaconSupport.swift in Sources */,
 				C8CEBAB02209D73F00F77AF7 /* Session+CoreDataClass.swift in Sources */,
 				C8F37C612204DDA0006A6BD9 /* MapView.swift in Sources */,
+				C8C52DAD220F3A9100072C78 /* Rooms+CoreDataProperties.swift in Sources */,
 				C8CEBAB12209D73F00F77AF7 /* Rooms+CoreDataClass.swift in Sources */,
-				C8CEBAAF2209D73F00F77AF7 /* Session+CoreDataProperties.swift in Sources */,
 				C8CEBA9F2209D71E00F77AF7 /* Edge+CoreDataClass.swift in Sources */,
+				C8C52DB3220F3A9100072C78 /* Vertex+CoreDataProperties.swift in Sources */,
+				C8C52DAF220F3A9100072C78 /* Campus+CoreDataProperties.swift in Sources */,
 				C8253D1622047481008FA557 /* ViewController.swift in Sources */,
-				C8CEBAB22209D73F00F77AF7 /* Rooms+CoreDataProperties.swift in Sources */,
+				C8C52DAC220F3A9100072C78 /* Session+CoreDataProperties.swift in Sources */,
+				C8C52DB2220F3A9100072C78 /* Floors+CoreDataProperties.swift in Sources */,
+				C8819CD0220F32A9007FDBE9 /* FireBaseWork.swift in Sources */,
+				C8C52DB1220F3A9100072C78 /* Edge+CoreDataProperties.swift in Sources */,
 				C8253D1422047481008FA557 /* AppDelegate.swift in Sources */,
 				C8CEBA9E2209D71E00F77AF7 /* Floors+CoreDataClass.swift in Sources */,
-				C8CEBAA52209D71E00F77AF7 /* Floors+CoreDataProperties.swift in Sources */,
 				C854C452220C7E8700E28A81 /*  Geometry.swift in Sources */,
 				C8CEBAA22209D71E00F77AF7 /* Beacons+CoreDataClass.swift in Sources */,
-				C8CEBAA42209D71E00F77AF7 /* Edge+CoreDataProperties.swift in Sources */,
-				C8CEBAB52209D73F00F77AF7 /* Vertex+CoreDataProperties.swift in Sources */,
-				C8CEBAA12209D71E00F77AF7 /* Beacons+CoreDataProperties.swift in Sources */,
 				C8253D2622047AD0008FA557 /* GraphEdge.swift in Sources */,
 				C8CEBAB82209D76C00F77AF7 /* TableModule.xcdatamodeld in Sources */,
+				C86E48CD220EF00D0043C86E /* WorldMapViewController.swift in Sources */,
 				C8CEBAA32209D71E00F77AF7 /* CoreDataHelper.swift in Sources */,
+				C8C52DAE220F3A9100072C78 /* Buildings+CoreDataProperties.swift in Sources */,
 				C8253D2A22048BCF008FA557 /* GraphVertex.swift in Sources */,
 				C8F37C632204E943006A6BD9 /* Polygon.swift in Sources */,
 			);
@@ -248,20 +337,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C8253D1722047481008FA557 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8253D1822047481008FA557 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C8253D1C22047482008FA557 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C8253D1D22047482008FA557 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C86E48CE220EF1290043C86E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C86E48CF220EF1290043C86E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C8819CD4220F374E007FDBE9 /* GoogleService-Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8819CD5220F374E007FDBE9 /* Base */,
+			);
+			name = "GoogleService-Info.plist";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -385,6 +482,7 @@
 		};
 		C8253D2322047482008FA557 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B59E512DD01322B0C025BF46 /* Pods-indoor navigation a.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -405,6 +503,7 @@
 		};
 		C8253D2422047482008FA557 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03492897046751A5D8439D6E /* Pods-indoor navigation a.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -1,9 +1,9 @@
 //
 //  Floors+CoreDataProperties.swift
-//  TableData
+//  indoor navigation a
 //
-//  Created by Александр Воронцов on 05/02/2019.
-//  Copyright © 2019 Александр Воронцов. All rights reserved.
+//  Created by Исмагил Сайфутдинов on 09/02/2019.
+//  Copyright © 2019 Исмагил Сайфутдинов. All rights reserved.
 //
 //
 
@@ -18,15 +18,33 @@ extension Floors {
     }
 
     @NSManaged public var comment: String?
-    @NSManaged public var id: Int64
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var buildingsrelationship: Buildings?
-    @NSManaged public var roomsrelationship: NSSet?
+    @NSManaged public var roomsrelationship: NSOrderedSet?
 
 }
 
 // MARK: Generated accessors for roomsrelationship
 extension Floors {
+
+    @objc(insertObject:inRoomsrelationshipAtIndex:)
+    @NSManaged public func insertIntoRoomsrelationship(_ value: Rooms, at idx: Int)
+
+    @objc(removeObjectFromRoomsrelationshipAtIndex:)
+    @NSManaged public func removeFromRoomsrelationship(at idx: Int)
+
+    @objc(insertRoomsrelationship:atIndexes:)
+    @NSManaged public func insertIntoRoomsrelationship(_ values: [Rooms], at indexes: NSIndexSet)
+
+    @objc(removeRoomsrelationshipAtIndexes:)
+    @NSManaged public func removeFromRoomsrelationship(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInRoomsrelationshipAtIndex:withObject:)
+    @NSManaged public func replaceRoomsrelationship(at idx: Int, with value: Rooms)
+
+    @objc(replaceRoomsrelationshipAtIndexes:withRoomsrelationship:)
+    @NSManaged public func replaceRoomsrelationship(at indexes: NSIndexSet, with values: [Rooms])
 
     @objc(addRoomsrelationshipObject:)
     @NSManaged public func addToRoomsrelationship(_ value: Rooms)
@@ -35,9 +53,9 @@ extension Floors {
     @NSManaged public func removeFromRoomsrelationship(_ value: Rooms)
 
     @objc(addRoomsrelationship:)
-    @NSManaged public func addToRoomsrelationship(_ values: NSSet)
+    @NSManaged public func addToRoomsrelationship(_ values: NSOrderedSet)
 
     @objc(removeRoomsrelationship:)
-    @NSManaged public func removeFromRoomsrelationship(_ values: NSSet)
+    @NSManaged public func removeFromRoomsrelationship(_ values: NSOrderedSet)
 
 }

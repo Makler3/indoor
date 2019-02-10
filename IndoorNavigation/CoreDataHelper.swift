@@ -3,6 +3,9 @@
 import Foundation
 import CoreData
 
+public var context1 = NSManagedObjectContext(concurrencyType:
+    NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+
 class CoreDataHelper: NSObject {
     class var instance: CoreDataHelper {
         struct Singleton {
@@ -38,7 +41,7 @@ class CoreDataHelper: NSObject {
         } catch let error1 as NSError {
             error = error1
             print("Cannot open database: \(String(describing: error))")
-            abort()
+            //abort()
         }
         
         context = NSManagedObjectContext(concurrencyType:

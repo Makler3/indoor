@@ -1,9 +1,9 @@
 //
 //  Session+CoreDataProperties.swift
-//  TableData
+//  indoor navigation a
 //
-//  Created by Александр Воронцов on 05/02/2019.
-//  Copyright © 2019 Александр Воронцов. All rights reserved.
+//  Created by Исмагил Сайфутдинов on 09/02/2019.
+//  Copyright © 2019 Исмагил Сайфутдинов. All rights reserved.
 //
 //
 
@@ -17,17 +17,12 @@ extension Session {
         return NSFetchRequest<Session>(entityName: "Session")
     }
 
-    @NSManaged public var id: Int64
+    @NSManaged public var comment: String?
     @NSManaged public var cordinates: String?
-    @NSManaged public var dt_start: NSDate?
     @NSManaged public var dt_end: NSDate?
     @NSManaged public var dt_modification: NSDate?
-    @NSManaged public var comment: String?
+    @NSManaged public var dt_start: NSDate?
+    @NSManaged public var id: String?
     @NSManaged public var roomsrelationship: Rooms?
-    
-    // --------Ismagil's comment--------------
-    /*
-     coordinates example string: "3.0 3.1", "3 2", "0 0"
-    */
 
 }

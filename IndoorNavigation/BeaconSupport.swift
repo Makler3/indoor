@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*func distanceFromRSSI(rssi: Int) -> Double? {
+func distanceFromRSSI(rssi: Int) -> Double? {
     let txPower = -59.0 //hard coded power value. Usually ranges between -59 to -65
     
     if (rssi == 0) {
@@ -25,4 +25,4 @@ import Foundation
         let distance =  0.89976 * pow(ratio, 7.7095) + 0.111
         return distance;
     }
-}*/
+}

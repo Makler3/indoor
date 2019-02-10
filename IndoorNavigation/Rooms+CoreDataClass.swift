@@ -18,21 +18,38 @@ public class Rooms: NSManagedObject {
     convenience init() {
         self.init(entity: Rooms.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(comment: String?, polygon: String, name: String?, type: Int) {
+    convenience init(id: String, comment: String?, polygon: String, name: String?, type: Int) {
+//        @NSManaged public var comment: String?
+//        @NSManaged public var polygon: String?
+//        @NSManaged public var id: Int64
+//        @NSManaged public var name: String?
+//        @NSManaged public var type: Int64
+//        @NSManaged public var beaconsrelationship: NSSet?
+//        @NSManaged public var floorsrelationship: Floors?
+//        @NSManaged public var sessioinrelationship: NSSet?
+//        @NSManaged public var vertexrelationship: NSSet?
         self.init()
         self.comment = comment
         self.polygon = polygon
-        self.id = Int64(Rooms.maximum())
+        self.id = id
         self.name = name
         self.type = Int64(type)
 
     }
+    
+    class func allitems() -> [Rooms] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Rooms")
+        
+        
+        let results = try? CoreDataHelper.instance.context.fetch(
+            fetchRequest)
+        
+        return results as! [Rooms]
+    }
+    
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Rooms")
         
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "id", ascending: true)
-        ]
         do {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count

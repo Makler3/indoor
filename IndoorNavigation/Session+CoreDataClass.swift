@@ -18,14 +18,29 @@ public class Session: NSManagedObject {
     convenience init() {
         self.init(entity: Session.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(cordinates: String, dt_start: NSDate, dt_end: NSDate, dt_modification: NSDate, comment: String) {
+    convenience init(id: String, cordinates: String?, dt_start: NSDate?, dt_end: NSDate?, dt_modification: NSDate?, comment: String?) {
+//        @NSManaged public var id: Int64
+//        @NSManaged public var cordinates: String?
+//        @NSManaged public var dt_start: NSDate?
+//        @NSManaged public var dt_end: NSDate?
+//        @NSManaged public var dt_modification: NSDate?
+//        @NSManaged public var comment: String?
+//        @NSManaged public var roomsrelationship: Rooms?
         self.init()
-        self.id = Int64(Session.maximum())
+        self.id = id
         self.cordinates = cordinates
         self.dt_start = dt_start
         self.dt_end = dt_end
         self.dt_modification = dt_modification
         self.comment = comment
+    }
+    class func allitems() -> [Session] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+        
+        let results = try? CoreDataHelper.instance.context.fetch(
+            fetchRequest)
+        
+        return results as! [Session]
     }
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")

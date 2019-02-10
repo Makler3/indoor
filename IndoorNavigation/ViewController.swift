@@ -9,11 +9,16 @@
 import UIKit
 import CoreLocation
 import CoreBluetooth
+import Firebase
 
-private var allRooms: [[Rooms]] = [[Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)], [Rooms(comment: nil, polygon: "2 3 5 3 5 6 2 6", name: nil, type: 1), Rooms(comment: nil, polygon: "5 3 8 3 8 9 5 9", name: nil, type: 1)]]
+//private var allRooms: [[Rooms]] = [[Rooms(comment: nil, polygon: "0 0 3 0 3 5 0 5", name: nil, type: 1), Rooms(comment: nil, polygon: "3 0 7 0 7 10 3 5", name: nil, type: 1), Rooms(comment: nil, polygon: "7 0 11 0 11 10 7 10", name: nil, type: 1)], [Rooms(comment: nil, polygon: "2 3 5 3 5 6 2 6", name: nil, type: 1), Rooms(comment: nil, polygon: "5 3 8 3 8 9 5 9", name: nil, type: 1)]]
 
-var allFloors: [Floors] = [Floors(roomsrelationship: NSSet(array: allRooms[0]), name: nil, comment: nil), Floors(roomsrelationship: NSSet(array: allRooms[1]), name: nil, comment: nil)]
 
+
+//var allFloors: [Floors] = [Floors(roomsrelationship: NSSet(array: allRooms[0]), name: nil, comment: nil), Floors(roomsrelationship: NSSet(array: allRooms[1]), name: nil, comment: nil)]
+
+private var allRooms = [Rooms]()
+var allFloors = [Floors]()
 var allVertexes = [Vertex]()
 var allEdges = [Edge]()
 
@@ -22,6 +27,48 @@ private var graph: Graph = Graph(edgesList: allEdges, vertexesList: allVertexes)
 //private var beaconsFromMinor = [Int: (CLBeacon, Beacons)]()
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var leadingS: NSLayoutConstraint!
+    @IBOutlet weak var trailingS: NSLayoutConstraint!
+    @IBOutlet var leadingC: NSLayoutConstraint!
+    @IBOutlet var trailingC: NSLayoutConstraint!
+    
+//    @IBOutlet var ubeView: UIView!
+    
+    
+    
+    var hamburgerMenuIsVisible = false
+    
+    @IBAction func hamburgerBtnTapped(_ sender: Any) {
+        //if the hamburger menu is NOT visible, then move the ubeView back to where it used to be
+        if !hamburgerMenuIsVisible {
+            leadingC.constant = 300
+            //this constant is NEGATIVE because we are moving it 150 points OUTWARD and that means -150
+            trailingC.constant = -300
+            leadingS.constant = 300
+            //this constant is NEGATIVE because we are moving it 150 points OUTWARD and that means -150
+            trailingS.constant = -300
+            
+            //1
+            hamburgerMenuIsVisible = true
+        } else {
+            //if the hamburger menu IS visible, then move the ubeView back to its original position
+            leadingC.constant = 0
+            trailingC.constant = 0
+            leadingS.constant = 0
+            trailingS.constant = 0
+            
+            //2
+            hamburgerMenuIsVisible = false
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }) { (animationComplete) in
+            print("The animation is complete!")
+        }
+    }
+
     
     @IBOutlet weak var mapView: MapView! {
         didSet {
@@ -32,7 +79,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             mapView.isUserInteractionEnabled = true
             mapView.addGestureRecognizer(pan)
             
-            mapView.needsPathBuild = true
+            print("__________KEK___________")
+            //mapView.needsPathBuild = true
         }
     }
     @IBAction func floorStepper(_ sender: UIStepper) {
@@ -53,7 +101,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allVertexes.append(Vertex(coordinates: "2 2.5", comment: nil))
+        let hse = WriteBase()
+        //        hse.writeCampus()
+        //        hse.writeBuildings()
+        //        hse.writeFloors()
+        //        hse.writeRooms()
+        //        hse.writeVertex()
+        //        hse.writeEdge()
+        
+        print("||||||")
+        FirebaseApp.configure()
+        hse.readRoom()
+        DispatchQueue.global(qos: .background).async { //асинхронное выполнение
+            sleep(2)
+            print("Tell me a story...")
+            hse.saving()
+            print(11, Rooms.maximum())
+            print(12, Vertex.maximum())
+            print(13, Vertex.allitems().first!.comment ?? ";;")
+            print(14, Vertex.allitems().first!.roomsrelationship?.name ?? "pp")
+            allVertexes = Vertex.allitems()
+            allEdges = Edge.allitems()
+            allRooms = Rooms.allitems()
+            allFloors = Floors.allitems()
+        }
+        
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        // the default direction is right
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        leftSwipe.direction = .left
+        
+        
+        view.addGestureRecognizer(rightSwipe)
+        view.addGestureRecognizer(leftSwipe)
+        
+        /*allVertexes.append(Vertex(coordinates: "2 2.5", comment: nil))
         allVertexes.last!.roomsrelationship = allRooms[0][0]
         
         allVertexes.append(Vertex(coordinates: "4 2.5", comment: nil))
@@ -100,11 +184,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         allEdges.append(Edge(distance: 0, vertexfromrelationship: allVertexes[7], vertextorelationship: allVertexes[6], doorscoordinates: "5 4 5 5", comment: nil))
         
         allEdges.append(Edge(distance: 0.5, vertexfromrelationship: allVertexes[0], vertextorelationship: allVertexes[6], doorscoordinates: nil, comment: nil))
-        allEdges.append(Edge(distance: 0.5, vertexfromrelationship: allVertexes[6], vertextorelationship: allVertexes[0], doorscoordinates: nil, comment: nil))
+        allEdges.append(Edge(distance: 0.5, vertexfromrelationship: allVertexes[6], vertextorelationship: allVertexes[0], doorscoordinates: nil, comment: nil))*/
         
         
-        mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: allVertexes[5], finish: allRooms[1][1]).1
-        mapView.needsPathBuild = true
+        //mapView.pathVertexes = graph.findShortestPathRunningDijkstra(start: allRooms[0][2], finish: allRooms[1][1]).1
+        //mapView.needsPathBuild = true
         
         locationManager.delegate = self
         //locationManager.requestAlwaysAuthorization()
@@ -141,15 +225,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         //print(beacons)
         
-        var coordinates = ["2 3", "5 6"]
+        //var coordinates = ["2 3", "5 6"]
         var iteration = 0
         if beacons.count > 0 {
             //updateDistance(beacons[0].proximity)
             
             // major 123 minor 1
-            var allBeacons = [(Int, Beacons)]()
+            //var allBeacons = [(Int, Beacons)]()
             for current in beacons {
-                let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
+                //let majorminor = String(Int(truncating: current.major)) + " " + String(Int(truncating: current.minor))
                 var distance: Int
                 if current.proximity == .immediate {
                     distance = 0
@@ -164,21 +248,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     distance = 3
                 }
                 
-                allBeacons.append((distance, Beacons(name: nil, coordinates: coordinates[iteration], majorminor: majorminor, uuid: "10F86430-1346-11E4-9191-0800200C9A66", comment: nil)))
-                allBeacons.last!.1.roomsrelationship = allRooms[1][0]
+                //allBeacons.append((distance, Beacons(name: nil, coordinates: coordinates[iteration], majorminor: majorminor, uuid: "10F86430-1346-11E4-9191-0800200C9A66", comment: nil)))
+                //allBeacons.last!.1.roomsrelationship = allRooms[1][0]
                 iteration += 1
                 
                 //beaconsFromMinor[allBeacons.last!.parseMajorMinor().minor!] = (beacons[0], allBeacons[0])
             }
             
-            mapView.findLocation(allBeacons)
+            //mapView.findLocation(allBeacons)
             
             //print(beacon.accuracy)
             //print(distanceFromRSSI(rssi: beacon.rssi) ?? "nil")
         }
         else {
             mapView.findLocation(Array())
-            updateDistance(.unknown)
+            //updateDistance(.unknown)
         }
     }
     
@@ -198,5 +282,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         })
     }
     
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            switch sender.direction {
+            case .right:
+                if !hamburgerMenuIsVisible {
+                    leadingC.constant = 300
+                    //this constant is NEGATIVE because we are moving it 150 points OUTWARD and that means -150
+                    trailingC.constant = -300
+                    leadingS.constant = 300
+                    //this constant is NEGATIVE because we are moving it 150 points OUTWARD and that means -150
+                    trailingS.constant = -300
+                    //1
+                    hamburgerMenuIsVisible = true
+                    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                        self.view.layoutIfNeeded()
+                    }) { (animationComplete) in
+                        print("The animation is complete!")
+                    }
+                }
+            case .left:
+                if hamburgerMenuIsVisible {
+                    leadingC.constant = 0
+                    trailingC.constant = 0
+                    leadingS.constant = 0
+                    trailingS.constant = 0
+                    //2
+                    hamburgerMenuIsVisible = false
+                    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                        self.view.layoutIfNeeded()
+                    }) { (animationComplete) in
+                        print("The animation is complete!")
+                    }
+                }
+            default:
+                break
+                
+            }
+        }
+    }
 }
 

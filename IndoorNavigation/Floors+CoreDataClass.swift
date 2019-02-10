@@ -18,20 +18,25 @@ public class Floors: NSManagedObject {
     convenience init() {
         self.init(entity: Floors.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(roomsrelationship: NSSet?, name: String?, comment: String?) {
+    convenience init(id: String, name: String?, comment: String? ) {
         
         self.init()
-        self.roomsrelationship = roomsrelationship
         self.name = name
-        self.id = Int64(Floors.maximum())
+        self.id = id
         self.comment = comment
+    }
+    class func allitems() -> [Floors] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Floors")
+        
+        
+        let results = try? CoreDataHelper.instance.context.fetch(
+            fetchRequest)
+        
+        return results as! [Floors]
     }
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Floors")
-        
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "id", ascending: true)
-        ]
+        print(fetchRequest)
         do {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count

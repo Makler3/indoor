@@ -1,9 +1,9 @@
 //
 //  Campus+CoreDataProperties.swift
-//  TableData
+//  indoor navigation a
 //
-//  Created by Александр Воронцов on 05/02/2019.
-//  Copyright © 2019 Александр Воронцов. All rights reserved.
+//  Created by Исмагил Сайфутдинов on 09/02/2019.
+//  Copyright © 2019 Исмагил Сайфутдинов. All rights reserved.
 //
 //
 
@@ -18,14 +18,32 @@ extension Campus {
     }
 
     @NSManaged public var comment: String?
-    @NSManaged public var id: Int64
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
-    @NSManaged public var buildingsrelationship: NSSet?
+    @NSManaged public var buildingsrelationship: NSOrderedSet?
 
 }
 
 // MARK: Generated accessors for buildingsrelationship
 extension Campus {
+
+    @objc(insertObject:inBuildingsrelationshipAtIndex:)
+    @NSManaged public func insertIntoBuildingsrelationship(_ value: Buildings, at idx: Int)
+
+    @objc(removeObjectFromBuildingsrelationshipAtIndex:)
+    @NSManaged public func removeFromBuildingsrelationship(at idx: Int)
+
+    @objc(insertBuildingsrelationship:atIndexes:)
+    @NSManaged public func insertIntoBuildingsrelationship(_ values: [Buildings], at indexes: NSIndexSet)
+
+    @objc(removeBuildingsrelationshipAtIndexes:)
+    @NSManaged public func removeFromBuildingsrelationship(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInBuildingsrelationshipAtIndex:withObject:)
+    @NSManaged public func replaceBuildingsrelationship(at idx: Int, with value: Buildings)
+
+    @objc(replaceBuildingsrelationshipAtIndexes:withBuildingsrelationship:)
+    @NSManaged public func replaceBuildingsrelationship(at indexes: NSIndexSet, with values: [Buildings])
 
     @objc(addBuildingsrelationshipObject:)
     @NSManaged public func addToBuildingsrelationship(_ value: Buildings)
@@ -34,9 +52,9 @@ extension Campus {
     @NSManaged public func removeFromBuildingsrelationship(_ value: Buildings)
 
     @objc(addBuildingsrelationship:)
-    @NSManaged public func addToBuildingsrelationship(_ values: NSSet)
+    @NSManaged public func addToBuildingsrelationship(_ values: NSOrderedSet)
 
     @objc(removeBuildingsrelationship:)
-    @NSManaged public func removeFromBuildingsrelationship(_ values: NSSet)
+    @NSManaged public func removeFromBuildingsrelationship(_ values: NSOrderedSet)
 
 }

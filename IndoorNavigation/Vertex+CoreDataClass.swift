@@ -18,18 +18,24 @@ public class Vertex: NSManagedObject {
     convenience init() {
         self.init(entity: Vertex.entity(), insertInto: CoreDataHelper.instance.context)
     }
-    convenience init(coordinates: String, comment: String?) {
+    convenience init(id: String, coordinates: String?, comment: String?) {
+//        @NSManaged public var id: Int64
+//        @NSManaged public var coordinates: String?
+//        @NSManaged public var comment: String?
+//        @NSManaged public var roomsrelationship: Rooms?
+//        @NSManaged public var edgetorelationship: NSSet?
+//        @NSManaged public var edgefromrelationship: NSSet?
         self.init()
-        self.id = Int64(Vertex.maximum())
-        self.coordinates = coordinates
+        self.id = id
+        self.coordinates = coordinates!
         self.comment = comment
+        self.edgefromrelationship = nil
+        self.edgetorelationship = nil
+        self.roomsrelationship = nil
     }
     class func maximum() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Vertex")
         
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "id", ascending: true)
-        ]
         do {
             let results = try CoreDataHelper.instance.context.fetch(fetchRequest)
             return results.count
@@ -38,6 +44,13 @@ public class Vertex: NSManagedObject {
             return 1
         }
     }
- 
-    
+    class func allitems() -> [Vertex] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Vertex")
+        
+        
+        let results = try? CoreDataHelper.instance.context.fetch(
+            fetchRequest)
+        
+        return results as! [Vertex]
+    }
 }

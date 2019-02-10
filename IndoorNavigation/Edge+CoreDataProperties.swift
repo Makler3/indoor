@@ -1,9 +1,9 @@
 //
 //  Edge+CoreDataProperties.swift
-//  TableData
+//  indoor navigation a
 //
-//  Created by Александр Воронцов on 05/02/2019.
-//  Copyright © 2019 Александр Воронцов. All rights reserved.
+//  Created by Исмагил Сайфутдинов on 09/02/2019.
+//  Copyright © 2019 Исмагил Сайфутдинов. All rights reserved.
 //
 //
 
@@ -17,17 +17,13 @@ extension Edge {
         return NSFetchRequest<Edge>(entityName: "Edge")
     }
 
-    @NSManaged public var id: Int64
-    @NSManaged public var distance: Double
-    @NSManaged public var doorscoordinates: String?
     @NSManaged public var comment: String?
+    @NSManaged public var distance: String?
+    @NSManaged public var doorscoordinates: String?
+    @NSManaged public var id: String?
+    @NSManaged public var vertexfrom: String?
+    @NSManaged public var vertexto: String?
     @NSManaged public var vertexfromrelationship: Vertex?
     @NSManaged public var vertextorelationship: Vertex?
-    
-    // --------Ismagil's comment--------------
-    /*
-     doorscoordinates example string: "3.0 3.1 2 0", "3 2 0 0"
-     doorscoordinates always has 4 coordinates
-    */
 
 }

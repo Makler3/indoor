@@ -18,7 +18,7 @@ class MapView: UIView {
     var needsPathBuild: Bool = false { didSet { setNeedsDisplay() } }
     var pathVertexes: [Vertex]? = nil { didSet { setNeedsDisplay() } }
     
-    var currentFloor: Floors = allFloors[0] { didSet { setNeedsDisplay() } }
+    var currentFloor: Floors? = Floors(id: "123", name: nil, comment: nil) { didSet { setNeedsDisplay() } }
     
     private var currentPosition: CGPoint? = nil { didSet { setNeedsDisplay() } }
     
@@ -104,9 +104,9 @@ class MapView: UIView {
         for current in figures {
             let path = UIBezierPath()
             path.move(to: CGPoint(x: current.points[0].x, y: current.points[0].y))
-            path.addLine(to: CGPoint(x: current.points[1].x, y: current.points[1].y))
-            path.addLine(to: CGPoint(x: current.points[2].x, y: current.points[2].y))
-            path.addLine(to: CGPoint(x: current.points[3].x, y: current.points[3].y))
+            for index in current.points.indices {
+                path.addLine(to: CGPoint(x: current.points[index].x, y: current.points[index].y))
+            }
             path.close()
             
             path.lineWidth = CGFloat(3.0)
@@ -223,12 +223,16 @@ class MapView: UIView {
     
     override func draw(_ rect: CGRect) {
         
+        if currentFloor == nil {
+            return
+        }
+        
         var minX = Double.infinity
         var maxX = -Double.infinity
         var minY = Double.infinity
         var maxY = -Double.infinity
         
-        for current in currentFloor.roomsrelationship! {
+        for current in currentFloor!.roomsrelationship! {
             for point in (current as! Rooms).parsePolygon()! {
                 minX = min(minX, point.x)
                 maxX = max(maxX, point.x)
@@ -250,7 +254,7 @@ class MapView: UIView {
         
         var rooms =  [Rooms]()
         
-        for current in currentFloor.roomsrelationship! {
+        for current in currentFloor!.roomsrelationship! {
             if let room = current as? Rooms {
                 rooms.append(room)
             }
@@ -353,7 +357,7 @@ extension Vertex {
         var coordinateX = 0.0
         var coordinateY = 0.0
         
-        for currentSymbol in coordinates {
+        for currentSymbol in coordinates! {
             if currentSymbol == Character(" ") {
                 coordinateX = Double(current)!
                 current = ""
@@ -375,7 +379,7 @@ extension Beacons {
         var coordinateX = 0.0
         var coordinateY = 0.0
         
-        for currentSymbol in coordinates {
+        for currentSymbol in coordinates! {
             if currentSymbol == Character(" ") {
                 coordinateX = Double(current)!
                 current = ""
@@ -443,7 +447,7 @@ extension Rooms {
         var coordinateX = 0.0
         var coordinateY = 0.0
         var numberOfCoordinatesFound = 0
-        for currentSymbol in polygon {
+        for currentSymbol in polygon! {
             if currentSymbol == Character(" ") {
                 numberOfCoordinatesFound += 1
                 
@@ -474,14 +478,10 @@ extension Rooms {
 
 extension Beacons {
     static func < (lhs: Beacons, rhs: Beacons) -> Bool {
-        return lhs.id < rhs.id
+        return lhs.id! < rhs.id!
     }
     
     func parseMajorMinor() -> (major: Int?, minor: Int?) {
-        if majorminor == nil {
-            return (major: nil, minor: nil)
-        }
-        
         var current = ""
         var firstNumber: Int? = nil
         var secondNumber: Int? = nil
